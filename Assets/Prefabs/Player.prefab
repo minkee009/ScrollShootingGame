@@ -3674,6 +3674,7 @@ GameObject:
   - component: {fileID: 6967246717503863325}
   - component: {fileID: 2969529073211039948}
   - component: {fileID: 6140603730981653155}
+  - component: {fileID: 7155220617620393020}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3730,7 +3731,28 @@ MonoBehaviour:
   - {fileID: 8707347487336019288}
   - {fileID: 8225425278319651288}
   - {fileID: 7371602578244768548}
-  missile: {fileID: 781854885168822687, guid: 075edca191ce0104397bb6da74b17322, type: 3}
+  missile: {fileID: 1000013997524248, guid: 3f5cb67b00f4ef546911f228835c63fd, type: 3}
+--- !u!65 &7155220617620393020
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3541019584122306748}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.8, y: 2, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3599349718595776068
 GameObject:
   m_ObjectHideFlags: 0

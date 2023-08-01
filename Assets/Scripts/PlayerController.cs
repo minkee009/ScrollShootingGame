@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using Unity.VisualScripting;
-using UnityEditor.Build;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -31,18 +30,18 @@ public class PlayerController : MonoBehaviour
 
         var wishPos = new Vector3(inputX * 2f, inputY, 0) * 4f * Time.deltaTime;
 
-        if (Mathf.Abs((transform.position + wishPos).x) > 65f)
+        if (Mathf.Abs((transform.position + wishPos).x) > 40f)
         {
             var clampF = wishPos.x > 0 ? 1 : -1;
-            transform.position = new Vector3(65f * clampF, transform.position.y, transform.position.z);
+            transform.position = new Vector3(40f * clampF, transform.position.y, transform.position.z);
             inputX = 0;
             wishPos.x = 0;
         }
 
-        if (Mathf.Abs((transform.position + wishPos).y) > 40f)
+        if (Mathf.Abs((transform.position + wishPos).y) > 24f)
         {
             var clampF = wishPos.y > 0 ? 1 : -1;
-            transform.position = new Vector3(transform.position.x, 40f * clampF, transform.position.z);
+            transform.position = new Vector3(transform.position.x, 24f * clampF, transform.position.z);
             wishPos.y = 0;
         }
 

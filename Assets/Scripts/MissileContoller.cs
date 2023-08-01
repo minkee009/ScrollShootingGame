@@ -6,7 +6,6 @@ using UnityEngine;
 public class MissileContoller : MonoBehaviour
 {
     public float moveSpeed = 15f;
-    public Vector3 moveDir;
     GameObject player;
 
     private void Awake()
@@ -18,7 +17,7 @@ public class MissileContoller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(moveDir * moveSpeed * Time.deltaTime);
+        transform.Translate(Vector3.up * moveSpeed * Time.deltaTime,Space.Self);
     }
 
 }

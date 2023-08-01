@@ -22,6 +22,8 @@ public class CameraController : MonoBehaviour
     void LateUpdate()
     {
         targetPos = PlayerTransform.position + CameraPos;
+        targetPos.x = Mathf.Clamp(targetPos.x, -28, 28);
+        targetPos.y = Mathf.Clamp(targetPos.y, -18, 18);
         currentPos = Vector3.Lerp(currentPos, targetPos, CameraChaseSpeed * Time.deltaTime);
         transform.position = currentPos;
     }

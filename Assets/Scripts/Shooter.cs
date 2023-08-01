@@ -24,7 +24,7 @@ public class Shooter : MonoBehaviour
             {
                 var newMissile = Instantiate(missile);
                 newMissile.transform.position = t.position;
-                newMissile.GetComponent<MissileContoller>().moveDir = t.transform.up;
+                newMissile.transform.rotation = t.rotation;
             }
         }
     }
