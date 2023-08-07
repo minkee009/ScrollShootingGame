@@ -7,7 +7,7 @@ public class CameraController : MonoBehaviour
     public Transform PlayerTransform;
 
     public Vector3 CameraPos;
-    public float CameraChaseSpeed = 4f;
+    public float CameraChaseSpeed = 2f;
 
     Vector3 targetPos;
     Vector3 currentPos;
