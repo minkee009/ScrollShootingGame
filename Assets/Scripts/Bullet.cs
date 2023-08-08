@@ -11,32 +11,53 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float speed = 10.0f;
-    public Vector3 dir = Vector3.up;
-
+    //public Vector3 dir = Vector3.up;
+    public bool reflect = false;
+    public LayerMask reflectMask;
+    public GameObject explosionEffect;
+    public Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
     {
         Destroy(gameObject,5f);
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position += dir * speed * Time.deltaTime;
+        Debug.DrawRay(transform.position, transform.up * speed * Time.deltaTime, Color.red);
+
+        var speedMag = speed * Time.deltaTime;
+
+        //4원수 -> 4원수(좌표계) * 3차원 벡터
+        if (reflect && Physics.Raycast(new Ray(transform.position, transform.up), out RaycastHit hit, speedMag + 0.02f, reflectMask, QueryTriggerInteraction.Ignore))
+        {
+            speedMag -= hit.distance - 0.02f;
+
+            transform.position += (hit.distance - 0.02f) * transform.up;
+            rb.MovePosition(transform.position + (hit.distance - 0.02f) * transform.up);
+
+            transform.up = Vector3.Reflect(transform.up, hit.normal);
+            rb.MoveRotation(transform.rotation);
+
+            transform.position += speedMag * transform.up;
+            rb.MovePosition(transform.position + speedMag * transform.up);
+
+            reflect = false;
+            return;
+        }
+        transform.position += transform.up * speed * Time.deltaTime;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject != null 
-            && other.gameObject.layer != this.gameObject.layer 
-            && other.gameObject.tag != gameObject.tag)
+        if(other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Enemy"))
         {
-            if(other.tag != "DangerZone")
-            {
-                GameObject.Destroy(other.gameObject);
-            }
-            Destroy(gameObject);
+            var g = Instantiate(explosionEffect);
+            g.transform.position = transform.position;
         }
+        Destroy(gameObject);
     }
 }

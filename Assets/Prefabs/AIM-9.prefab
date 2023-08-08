@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4000012999929750}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AIM-9 SIDEWINDER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 4000012264577326}
   - component: {fileID: 33000013605943580}
   - component: {fileID: 23000013674353004}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wing01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 4000013600061822}
   - component: {fileID: 33000010034739086}
   - component: {fileID: 23000012020558022}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sphere03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 4000010039180158}
   - component: {fileID: 33000012910574086}
   - component: {fileID: 23000012057366308}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sphere02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -307,7 +307,7 @@ GameObject:
   - component: {fileID: 4000014214816458}
   - component: {fileID: 33000011479000058}
   - component: {fileID: 23000011747729988}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -390,7 +390,7 @@ GameObject:
   - component: {fileID: 4000014250573596}
   - component: {fileID: 33000012873417896}
   - component: {fileID: 23000013185231376}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Box02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -473,7 +473,7 @@ GameObject:
   - component: {fileID: 4000012588261746}
   - component: {fileID: 33000010274261656}
   - component: {fileID: 23000012827457578}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wing02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -556,7 +556,7 @@ GameObject:
   - component: {fileID: 4000011920309216}
   - component: {fileID: 33000012872363994}
   - component: {fileID: 23000012102143732}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -639,7 +639,7 @@ GameObject:
   - component: {fileID: 4000011010892592}
   - component: {fileID: 33000011579030098}
   - component: {fileID: 23000010331011278}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sphere04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -722,7 +722,7 @@ GameObject:
   - component: {fileID: 4000010367277058}
   - component: {fileID: 33000011088831044}
   - component: {fileID: 23000012102945352}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sphere01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -805,7 +805,7 @@ GameObject:
   - component: {fileID: 4000012675668704}
   - component: {fileID: 33000010310191142}
   - component: {fileID: 23000012945202784}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wingBack03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -888,7 +888,7 @@ GameObject:
   - component: {fileID: 4000013906188518}
   - component: {fileID: 33000012908110104}
   - component: {fileID: 23000012135068210}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cylinder01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -971,7 +971,7 @@ GameObject:
   - component: {fileID: 4000010744757650}
   - component: {fileID: 33000013202388654}
   - component: {fileID: 23000011411964980}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Box01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1054,7 +1054,7 @@ GameObject:
   - component: {fileID: 4000012679032692}
   - component: {fileID: 33000012808502582}
   - component: {fileID: 23000014044023672}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wingBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1137,7 +1137,7 @@ GameObject:
   - component: {fileID: 4000012850971692}
   - component: {fileID: 33000013112248032}
   - component: {fileID: 23000012901143478}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wingBack04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1220,7 +1220,7 @@ GameObject:
   - component: {fileID: 4000011080462420}
   - component: {fileID: 33000010008739848}
   - component: {fileID: 23000013167003432}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wingBack02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1301,9 +1301,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4000011910308716}
-  - component: {fileID: 5260456380199103725}
-  - component: {fileID: 6726421081096763173}
-  m_Layer: 0
+  - component: {fileID: 6842570318362503801}
+  - component: {fileID: 4520008096279233289}
+  - component: {fileID: 4975804564626460574}
+  m_Layer: 3
   m_Name: AIM-9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1326,8 +1327,53 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &5260456380199103725
-CapsuleCollider:
+--- !u!114 &6842570318362503801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000013997524248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f2da36c6659a7a409355c87e2c338dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  reflect: 0
+  reflectMask:
+    serializedVersion: 2
+    m_Bits: 0
+  rb: {fileID: 4520008096279233289}
+--- !u!54 &4520008096279233289
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000013997524248}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!65 &4975804564626460574
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1344,24 +1390,9 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.3
-  m_Height: 3
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: -0.35}
---- !u!114 &6726421081096763173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000013997524248}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c159162dc4ba6b246a9799d4357619a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 15
+  serializedVersion: 3
+  m_Size: {x: 0.5, y: 0.5, z: 0.5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1000014241239646
 GameObject:
   m_ObjectHideFlags: 0
@@ -1373,7 +1404,7 @@ GameObject:
   - component: {fileID: 4000011178970010}
   - component: {fileID: 33000010502557446}
   - component: {fileID: 23000011711388014}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wing03
   m_TagString: Untagged
   m_Icon: {fileID: 0}

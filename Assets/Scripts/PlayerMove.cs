@@ -8,8 +8,18 @@ public class PlayerMove : MonoBehaviour
     public float speed = 5f;
     //public Transform EnemyTransform;
     public Camera MainCamera;
+    public GameObject DeathEffect;
 
     public bool playerPosClamp = true;
+
+    public Transform rootTransform;
+    public float rotateAmount = 12f;
+
+    private float targetRotY = 0;
+    private float currentRotY = 0;
+
+    public int hp = 10;
+
     float clampX = 0;
     float clampY = 0;
     
@@ -31,8 +41,8 @@ public class PlayerMove : MonoBehaviour
         clampX = Mathf.Abs(wholeClampPos.x - 0.5f);
         clampY = Mathf.Abs(wholeClampPos.y - 0.5f);
 
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
+        float h = (Input.GetKey(KeyCode.RightArrow) ? 1 : 0) + (Input.GetKey(KeyCode.LeftArrow) ? -1 : 0);
+        float v = (Input.GetKey(KeyCode.UpArrow) ? 1 : 0) + (Input.GetKey(KeyCode.DownArrow) ? -1 : 0);
 
         Vector3 dir = Vector3.right * h + Vector3.up * v;
 
@@ -46,6 +56,7 @@ public class PlayerMove : MonoBehaviour
             int minus = transform.position.x > 0f ? 1 : -1;
 
             transform.position = new Vector3(clampX * minus, transform.position.y, transform.position.z);
+            h = 0;
         }
         if (Mathf.Abs(transform.position.y) > clampY)
         {
@@ -54,17 +65,55 @@ public class PlayerMove : MonoBehaviour
             transform.position = new Vector3(transform.position.x, clampY * minus, transform.position.z);
         }
 
+        targetRotY = h != 0
+            ? (h > 0 ? -rotateAmount : rotateAmount) : 0;
+
+        currentRotY = Mathf.Lerp(currentRotY, targetRotY, 25f * Time.deltaTime);
+
+        rootTransform.localRotation = Quaternion.Euler(0f, currentRotY, 0f);
+
+
         //적 디버깅
         /*Vector3 enemyPos = EnemyTransform != null ? EnemyTransform.position : Vector3.zero;
         Vector3 playerPos = transform.position;
 
         var toEnemyDir = (enemyPos - playerPos).normalized;
         var toEnemyDist = (enemyPos - playerPos).magnitude;*/
-        
+
         /*Debug.Log("방향 : " + toEnemyDir + " | 거리 : " +  toEnemyDist);
         Debug.DrawRay(transform.position, toEnemyDir, Color.yellow);*/
 
         //lineRenderer.SetPosition(0, playerPos);
         //lineRenderer.SetPosition(1, playerPos + toEnemyDir);
+
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag != "Item")
+        {
+            hp--;
+            if(hp <= 0)
+            {
+                var effect = Instantiate(DeathEffect);
+                effect.transform.position = transform.position;
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Enemy")
+        {
+            hp--;
+            if (hp <= 0)
+            {
+                var effect = Instantiate(DeathEffect);
+                effect.transform.position = transform.position;
+                Destroy(gameObject);
+            }
+        }
     }
 }

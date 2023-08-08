@@ -6,19 +6,21 @@ TagManager:
   tags:
   - Enemy
   - DangerZone
+  - Item
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Projectile
+  - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - DangerZone
+  - ReflectWall
+  - PlayerProjectile
+  - EnemyProjectile
   - 
   - 
   - 

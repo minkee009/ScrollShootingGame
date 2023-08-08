@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class ScrollBackGround : MonoBehaviour
 {
-    Sprite BackGroundImage;
-    float UVPosY = 0;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    float currentTime;
+    public float Speed;
+    public Material backGround;
+
 
     // Update is called once per frame
     void Update()
     {
-        UVPosY += Time.deltaTime;
+        currentTime += Speed * Time.deltaTime;
 
+        backGround.mainTextureOffset = Vector2.up * currentTime;
     }
 }

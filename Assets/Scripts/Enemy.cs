@@ -9,7 +9,9 @@ public class Enemy : MonoBehaviour
     public Vector3 dir = Vector3.down;
     public Transform playerTransform;
     public Bullet enemyBullet;
+    public GameObject deathEffect;
 
+    public int hp = 3;
     float chaseMode = 0;
     float incount = 0;
 
@@ -18,7 +20,7 @@ public class Enemy : MonoBehaviour
     {
         chaseMode = Random.Range(0, 10);
 
-        if (Random.Range(0, 10) <= 3)
+        if (Random.Range(0, 10) <= 3 && playerTransform != null)
         {
             dir = (playerTransform.position - transform.position).normalized;
         }
@@ -29,6 +31,8 @@ public class Enemy : MonoBehaviour
     {
         if (playerTransform == null) return;
 
+        
+
         incount += Time.deltaTime;
         if(incount > 0.7)
         {
@@ -36,7 +40,7 @@ public class Enemy : MonoBehaviour
             incount = 0;
         }
 
-        if(chaseMode <= 1)
+        if(chaseMode <= 1 && playerTransform != null)
         {
             dir = (playerTransform.position - transform.position).normalized;
         }
@@ -50,16 +54,33 @@ public class Enemy : MonoBehaviour
         bullet.tag = "Enemy";
         bullet.transform.position = transform.position;
         bullet.GetComponent<Rigidbody>().MovePosition(transform.position);
-        bullet.dir = (playerTransform.position - transform.position).normalized;
+        bullet.transform.up = (playerTransform.position - transform.position).normalized;
+        bullet.GetComponent<Rigidbody>().MoveRotation(bullet.transform.rotation);
         bullet.speed = 8.0f;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision != null
-            && collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
-            Destroy(collision.gameObject);
+            var effect = Instantiate(deathEffect);
+            effect.transform.position = transform.position;
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.layer == 10)
+        {
+            hp--;
+
+            if (hp <= 0)
+            {
+                var effect = Instantiate(deathEffect);
+                effect.transform.position = transform.position;
+                Destroy(gameObject);
+            }
         }
     }
 }

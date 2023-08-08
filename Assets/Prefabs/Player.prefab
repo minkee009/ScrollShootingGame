@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8613898842944964673}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rear_Wing_Flaps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 7592032149104878472}
   - component: {fileID: 2703735324047266786}
   - component: {fileID: 554634248677957979}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rear_Right_Wing_Flap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 7575222103444960015}
   - component: {fileID: 7113249942785012748}
   - component: {fileID: 4244608525511087332}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rear_Left_Wing_Flap_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 6738032828831698010}
   - component: {fileID: 9211871983326894593}
   - component: {fileID: 6313167194623508502}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main_Cockpit_body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -297,7 +297,7 @@ GameObject:
   - component: {fileID: 8199388958209951199}
   - component: {fileID: 5879224815492224348}
   - component: {fileID: 8200506346104933395}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Landing_Flap_Front_Outer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -380,7 +380,7 @@ GameObject:
   - component: {fileID: 6279787918095015073}
   - component: {fileID: 1004732097909563405}
   - component: {fileID: 3247232579060281225}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Landing_Gear_Left_Rear_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -463,7 +463,7 @@ GameObject:
   - component: {fileID: 5077402100156910047}
   - component: {fileID: 5024881308460846205}
   - component: {fileID: 6521016818774794929}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rear_Fin_Flap_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -546,7 +546,7 @@ GameObject:
   - component: {fileID: 6566873791645025050}
   - component: {fileID: 3799673749041231610}
   - component: {fileID: 2077470835943891730}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Landing_Flap_Rear_Right_Outer_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -627,7 +627,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2148781697772882076}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Canopy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -664,10 +664,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8707347487336019288}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pos1
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -697,7 +697,7 @@ GameObject:
   - component: {fileID: 9105781394920402441}
   - component: {fileID: 4231831724373067095}
   - component: {fileID: 6709203922212385319}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Landing_Flap_Rear_Left_Inner_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -780,7 +780,7 @@ GameObject:
   - component: {fileID: 5978524381963583037}
   - component: {fileID: 1437084687981751636}
   - component: {fileID: 1637616641210403371}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -863,7 +863,7 @@ GameObject:
   - component: {fileID: 2297459711646447750}
   - component: {fileID: 223535432334042782}
   - component: {fileID: 5035619856430336942}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Landing_Gear_Connecter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -946,7 +946,7 @@ GameObject:
   - component: {fileID: 4766791758530634693}
   - component: {fileID: 5900629473107518219}
   - component: {fileID: 2748548790942416153}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Landing_Flap_Rear_Right_Inner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1029,7 +1029,7 @@ GameObject:
   - component: {fileID: 4964069752099004538}
   - component: {fileID: 4960612060535257934}
   - component: {fileID: 599303854196681324}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Landing_Flap_Rear_Right_Inner_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1110,7 +1110,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8452873490939896696}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Landing_Gear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1146,7 +1146,7 @@ GameObject:
   - component: {fileID: 4662716687035628611}
   - component: {fileID: 5079648654787473580}
   - component: {fileID: 248502271228040374}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Middle_Brake_Flap_Inner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1227,7 +1227,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 877402672240381908}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1267,7 +1267,7 @@ GameObject:
   - component: {fileID: 7590752977504949686}
   - component: {fileID: 3625910328938916190}
   - component: {fileID: 6020699616866343096}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Glass_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1350,7 +1350,7 @@ GameObject:
   - component: {fileID: 6970627433905936733}
   - component: {fileID: 7799271846607157287}
   - component: {fileID: 7945506404523627865}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body_Under_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1433,7 +1433,7 @@ GameObject:
   - component: {fileID: 4460226329047711524}
   - component: {fileID: 2660763862823417213}
   - component: {fileID: 1634229423481211315}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rear_Left_Wing_Flap_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1514,7 +1514,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1729684766745881462}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Left_Rear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1553,7 +1553,7 @@ GameObject:
   - component: {fileID: 434383921043408613}
   - component: {fileID: 2143652405652010841}
   - component: {fileID: 3825982525802113242}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Landing_Flap_Rer_Right_Inner_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1636,7 +1636,7 @@ GameObject:
   - component: {fileID: 6607408916359128899}
   - component: {fileID: 8260399593068412251}
   - component: {fileID: 442170501171465578}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main_Wheel_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1717,7 +1717,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4128551883753166444}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirePos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1753,7 +1753,7 @@ GameObject:
   - component: {fileID: 6012235471951839905}
   - component: {fileID: 2299986446996376233}
   - component: {fileID: 1381738381533999950}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rear_Left_Engine_Ring_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1836,7 +1836,7 @@ GameObject:
   - component: {fileID: 2596347724382969593}
   - component: {fileID: 480715883066251611}
   - component: {fileID: 2761104947959174141}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main_Wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1919,7 +1919,7 @@ GameObject:
   - component: {fileID: 3700149062412993736}
   - component: {fileID: 8378142481296943531}
   - component: {fileID: 7126260229507212908}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Landing_Gear_part_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2000,7 +2000,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 423439017051176358}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cockpit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2038,7 +2038,7 @@ GameObject:
   - component: {fileID: 6149454609247118666}
   - component: {fileID: 8700603332563572529}
   - component: {fileID: 7341126781287938666}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Glass_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2122,7 +2122,7 @@ GameObject:
   - component: {fileID: 2291540920575402137}
   - component: {fileID: 2346949283826199210}
   - component: {fileID: 8911890225673665392}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2226,7 +2226,7 @@ GameObject:
   - component: {fileID: 6908344037689864879}
   - component: {fileID: 9185022142608992557}
   - component: {fileID: 5132242950870431522}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2309,7 +2309,7 @@ GameObject:
   - component: {fileID: 3095765766968410736}
   - component: {fileID: 5973065620373387338}
   - component: {fileID: 8067023642924936181}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Middle_Brake_Flap_Part_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2392,7 +2392,7 @@ GameObject:
   - component: {fileID: 1490462711544687643}
   - component: {fileID: 3982508325894338949}
   - component: {fileID: 5023212354993014811}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Landing_Gear_Part_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2475,7 +2475,7 @@ GameObject:
   - component: {fileID: 6670581770303982473}
   - component: {fileID: 363703499875949508}
   - component: {fileID: 8717840334644979603}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Middle_Brake_Flap_Part_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2558,7 +2558,7 @@ GameObject:
   - component: {fileID: 4115959711908879108}
   - component: {fileID: 694121976303289602}
   - component: {fileID: 348863835842485426}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Landing_Gera_Part_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2639,7 +2639,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3039706438460428745}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Landing_Gear_Right_Rear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2678,7 +2678,7 @@ GameObject:
   - component: {fileID: 3411769081531138137}
   - component: {fileID: 5924710400634632160}
   - component: {fileID: 8201199146560552117}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Landing_Flap_front_outer_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2761,7 +2761,7 @@ GameObject:
   - component: {fileID: 1515392504004556019}
   - component: {fileID: 5864281542915306851}
   - component: {fileID: 5278549112685561500}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Landing_Flap_Rear_Left_Outer_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2844,7 +2844,7 @@ GameObject:
   - component: {fileID: 8365283101758805533}
   - component: {fileID: 2059085351879376414}
   - component: {fileID: 6933384126623075831}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Middle_Brake_Flap_Outer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2927,7 +2927,7 @@ GameObject:
   - component: {fileID: 6481438560462070085}
   - component: {fileID: 4333527788618638783}
   - component: {fileID: 1766092018247830141}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Landing_Flap_Front_inner_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3010,7 +3010,7 @@ GameObject:
   - component: {fileID: 1479247701823296589}
   - component: {fileID: 7764240162120411942}
   - component: {fileID: 2926002096659819557}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Landing_Flap_Rear_Left_outer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3093,7 +3093,7 @@ GameObject:
   - component: {fileID: 8839469247590203816}
   - component: {fileID: 8412613793822330052}
   - component: {fileID: 3961712911140154315}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bombs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3176,7 +3176,7 @@ GameObject:
   - component: {fileID: 8745987094494110392}
   - component: {fileID: 6104043780854702977}
   - component: {fileID: 2285374139966821904}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rear_Right_Engine_ring_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3259,7 +3259,7 @@ GameObject:
   - component: {fileID: 993907100461482324}
   - component: {fileID: 7142797817823516476}
   - component: {fileID: 1184630349201598433}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rear_Left_Engine_Ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3342,7 +3342,7 @@ GameObject:
   - component: {fileID: 5542825261164462544}
   - component: {fileID: 7886353450794876164}
   - component: {fileID: 9211055571045492072}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Landing_Gear_Part_2_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3425,7 +3425,7 @@ GameObject:
   - component: {fileID: 4301521188273501514}
   - component: {fileID: 6835834894771187654}
   - component: {fileID: 1164902067498185769}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Landing_Gear_Front_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3508,7 +3508,7 @@ GameObject:
   - component: {fileID: 7948594493281144709}
   - component: {fileID: 8137694869416466428}
   - component: {fileID: 7266857300346797751}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Landing_Gear_part_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3591,7 +3591,7 @@ GameObject:
   - component: {fileID: 5204428469456092495}
   - component: {fileID: 7194416384302624936}
   - component: {fileID: 7040402619269710663}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rear_Right_Engiine_ring_
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3675,7 +3675,8 @@ GameObject:
   - component: {fileID: 2969529073211039948}
   - component: {fileID: 6140603730981653155}
   - component: {fileID: 7155220617620393020}
-  m_Layer: 0
+  - component: {fileID: 6808731259335285776}
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -3697,7 +3698,7 @@ Transform:
   - {fileID: 5648258020509340263}
   - {fileID: 4128551883753166444}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2969529073211039948
 MonoBehaviour:
@@ -3722,7 +3723,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3541019584122306748}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d55da2220e55a304db3dabb973a799bb, type: 3}
   m_Name: 
@@ -3753,6 +3754,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.8, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6808731259335285776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3541019584122306748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96da9b15726ece4458762554178b9c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myBullet: {fileID: 0}
+  gunPos: {fileID: 0}
 --- !u!1 &3599349718595776068
 GameObject:
   m_ObjectHideFlags: 0
@@ -3764,7 +3779,7 @@ GameObject:
   - component: {fileID: 1426427291389774913}
   - component: {fileID: 4713541968444799182}
   - component: {fileID: 3296753046041556833}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wheel_Mount_Connector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3847,7 +3862,7 @@ GameObject:
   - component: {fileID: 9104343843364572882}
   - component: {fileID: 3412770975848799458}
   - component: {fileID: 353792022110729746}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Landing_Gear_Part_1_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3930,7 +3945,7 @@ GameObject:
   - component: {fileID: 4263594705994611583}
   - component: {fileID: 4683225164621076203}
   - component: {fileID: 7927891576573004865}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Missiles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4013,7 +4028,7 @@ GameObject:
   - component: {fileID: 3032402422626636112}
   - component: {fileID: 6123478996206888539}
   - component: {fileID: 6001279486376814882}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4094,10 +4109,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7371602578244768548}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pos3
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -4125,7 +4140,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8418473348579875067}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DebugModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4161,7 +4176,7 @@ GameObject:
   - component: {fileID: 4023440971554630916}
   - component: {fileID: 3503049042468644095}
   - component: {fileID: 525942530019616688}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Canopy_Part_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4242,7 +4257,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6800696531699217668}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: F15C_Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4276,7 +4291,7 @@ GameObject:
   - component: {fileID: 5623563257513909999}
   - component: {fileID: 2039898077726003704}
   - component: {fileID: 7574348378790072779}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Landing_Gear_Rear_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4359,7 +4374,7 @@ GameObject:
   - component: {fileID: 3523264692851037812}
   - component: {fileID: 3031233749512396609}
   - component: {fileID: 1731537848195871531}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cockpit_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4440,7 +4455,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4813767297856344698}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Front_Flaps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4477,7 +4492,7 @@ GameObject:
   - component: {fileID: 8623537915203778843}
   - component: {fileID: 6431581225549010495}
   - component: {fileID: 9024619511526287288}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body_Under_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4560,7 +4575,7 @@ GameObject:
   - component: {fileID: 2842822525072984089}
   - component: {fileID: 4624138434742163007}
   - component: {fileID: 2593107611361373414}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Landing_Flap_Rear_Left_Inner_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4643,7 +4658,7 @@ GameObject:
   - component: {fileID: 6698880791063322141}
   - component: {fileID: 5028784140003319248}
   - component: {fileID: 4627775865885326864}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Landing_Flap_Rear_Left_Outer_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4726,7 +4741,7 @@ GameObject:
   - component: {fileID: 325198170967098558}
   - component: {fileID: 719290887931403409}
   - component: {fileID: 2263209986375469888}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rear_Fin_Flap_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4807,7 +4822,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7216860180252117887}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rear_Fin_Flaps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4842,7 +4857,7 @@ GameObject:
   - component: {fileID: 535156120487854890}
   - component: {fileID: 3586119431887487374}
   - component: {fileID: 5242590779647075034}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Landing_Gear_part_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4925,7 +4940,7 @@ GameObject:
   - component: {fileID: 8448343833664185117}
   - component: {fileID: 978285484702435496}
   - component: {fileID: 5540053186875889216}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pilot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5008,7 +5023,7 @@ GameObject:
   - component: {fileID: 602161553758984244}
   - component: {fileID: 8158937046282986406}
   - component: {fileID: 3513462007242656481}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rear_Left_Wing_Flap_
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5091,7 +5106,7 @@ GameObject:
   - component: {fileID: 4588631962686998399}
   - component: {fileID: 5469489495921029128}
   - component: {fileID: 2961062230608245719}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cockpit_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5174,7 +5189,7 @@ GameObject:
   - component: {fileID: 8847236102324401735}
   - component: {fileID: 6893623067286996533}
   - component: {fileID: 7252293163042430680}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wheels_Mount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5257,7 +5272,7 @@ GameObject:
   - component: {fileID: 9058000517880591029}
   - component: {fileID: 4609745241486370940}
   - component: {fileID: 6069301822859145215}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wings_Main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5340,7 +5355,7 @@ GameObject:
   - component: {fileID: 8712488938997386230}
   - component: {fileID: 275404836039616518}
   - component: {fileID: 1309314315271462089}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Landing_Flap_Rear_Right_Outer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5421,10 +5436,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8225425278319651288}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pos2
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -5452,7 +5467,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5389702168576445189}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Middle_brake_flap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5490,7 +5505,7 @@ GameObject:
   - component: {fileID: 2614070762019702826}
   - component: {fileID: 6992549330082890856}
   - component: {fileID: 2932847126448357138}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5594,7 +5609,7 @@ GameObject:
   - component: {fileID: 5777071105060344901}
   - component: {fileID: 4554436236020628408}
   - component: {fileID: 4295719974843360063}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Landing_Gera_Part1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5675,7 +5690,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4049825660607652311}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Landing_Gear_Front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5717,7 +5732,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8935776292452405401}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wing_Flaps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5750,7 +5765,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5648258020509340263}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5783,7 +5798,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 627309287005527257}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Weapons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5818,7 +5833,7 @@ GameObject:
   - component: {fileID: 524936437923384260}
   - component: {fileID: 4304141394836219371}
   - component: {fileID: 7138996106846553928}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Landing_Flap_Rear_Right_Outer_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5899,7 +5914,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4999886172458876076}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: F-15C_Eagle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5941,7 +5956,7 @@ GameObject:
   - component: {fileID: 1959278218273397540}
   - component: {fileID: 6952338009790995455}
   - component: {fileID: 5726759519991231353}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Landing_Gear_Part_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6022,7 +6037,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6683473112723497524}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Right_Rear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6061,7 +6076,7 @@ GameObject:
   - component: {fileID: 4534982556276586489}
   - component: {fileID: 6208968894944556299}
   - component: {fileID: 2162682878930871308}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Canopy_Part_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6144,7 +6159,7 @@ GameObject:
   - component: {fileID: 148643854888217376}
   - component: {fileID: 6285032302727682024}
   - component: {fileID: 2743134371440021982}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Landing_Gear_Front_2_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6227,7 +6242,7 @@ GameObject:
   - component: {fileID: 3758863342067207939}
   - component: {fileID: 669986074063007819}
   - component: {fileID: 2326323309212775711}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Landing_Flap_Rear_Left_Inner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6310,7 +6325,7 @@ GameObject:
   - component: {fileID: 5248201177617841611}
   - component: {fileID: 3726406849774920207}
   - component: {fileID: 490211545391157430}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rear_Right_Wing_Flap_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6393,7 +6408,7 @@ GameObject:
   - component: {fileID: 2591106929104373844}
   - component: {fileID: 692748863653064338}
   - component: {fileID: 1287229198317533931}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Front_Wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6476,7 +6491,7 @@ GameObject:
   - component: {fileID: 3241029982471910488}
   - component: {fileID: 2279327426763901478}
   - component: {fileID: 7577434863838392752}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Engines_Rear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6557,7 +6572,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3898353942932407719}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Engines
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6595,7 +6610,7 @@ GameObject:
   - component: {fileID: 6142414148326221087}
   - component: {fileID: 5501570545092897478}
   - component: {fileID: 6871857373685315239}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Seat_panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6676,7 +6691,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1625218959923346969}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Landing_Gear_Left_Rear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6715,7 +6730,7 @@ GameObject:
   - component: {fileID: 4668110205741753365}
   - component: {fileID: 7454636735466081107}
   - component: {fileID: 429838467608049031}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Landing_Gear_Part_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6798,7 +6813,7 @@ GameObject:
   - component: {fileID: 8186128674803658817}
   - component: {fileID: 5027199541673296187}
   - component: {fileID: 1503342348151221608}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wheel_Connector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6882,7 +6897,7 @@ GameObject:
   - component: {fileID: 3255856894469101390}
   - component: {fileID: 2054206439844993062}
   - component: {fileID: 5188205645630923012}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6986,7 +7001,7 @@ GameObject:
   - component: {fileID: 6995429480846932665}
   - component: {fileID: 8345114726981154547}
   - component: {fileID: 4955295842797460767}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wheel_Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7069,7 +7084,7 @@ GameObject:
   - component: {fileID: 4359816426322683157}
   - component: {fileID: 3616859412975365936}
   - component: {fileID: 4520037284725626829}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Canopy_Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7152,7 +7167,7 @@ GameObject:
   - component: {fileID: 6185020545681500882}
   - component: {fileID: 6853486895428980010}
   - component: {fileID: 6433761209836291510}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body_Parts_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7235,7 +7250,7 @@ GameObject:
   - component: {fileID: 8486687454657172932}
   - component: {fileID: 4661000272089653139}
   - component: {fileID: 1722837446465204049}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rear_Right_Wing_Flap_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7316,7 +7331,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2597480251742491724}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Landing_gear_flaps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7352,7 +7367,7 @@ GameObject:
   - component: {fileID: 811929085369930524}
   - component: {fileID: 7802639222042468205}
   - component: {fileID: 1931986110444349676}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Landing_Flap_Front_Parts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7435,7 +7450,7 @@ GameObject:
   - component: {fileID: 3034442002350880835}
   - component: {fileID: 3036016089390684144}
   - component: {fileID: 8450184928762741306}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Landing_Gear_Part_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7518,7 +7533,7 @@ GameObject:
   - component: {fileID: 826745509497648971}
   - component: {fileID: 7206051444488413357}
   - component: {fileID: 4128888769204056416}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Canopy_Frame_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
