@@ -153,7 +153,7 @@ public class PlayerFire : MonoBehaviour
     {
         if(other.gameObject.tag == "Item")
         {
-            skillLevel++;
+            skillLevel = Mathf.Min(skillLevel + 1, 3);
             Destroy(other.gameObject);
         }
     }
