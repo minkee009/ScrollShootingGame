@@ -101,6 +101,10 @@ public class PlayerMove : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+        else
+        {
+            hp = Mathf.Min(hp + 1,10);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)

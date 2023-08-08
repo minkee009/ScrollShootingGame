@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public Transform playerTransform;
     public Bullet enemyBullet;
     public GameObject deathEffect;
+    public GameObject Item;
 
     public int hp = 3;
     float chaseMode = 0;
@@ -30,8 +31,6 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         if (playerTransform == null) return;
-
-        
 
         incount += Time.deltaTime;
         if(incount > 0.7)
@@ -63,9 +62,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            var effect = Instantiate(deathEffect);
-            effect.transform.position = transform.position;
-            Destroy(gameObject);
+            Die();
         }
     }
 
@@ -77,10 +74,20 @@ public class Enemy : MonoBehaviour
 
             if (hp <= 0)
             {
-                var effect = Instantiate(deathEffect);
-                effect.transform.position = transform.position;
-                Destroy(gameObject);
+                Die();
             }
         }
+    }
+
+    private void Die()
+    {
+        if(Random.Range(0,10) > 6)
+        {
+            var dropItem = Instantiate(Item);
+            dropItem.transform.position = transform.position;
+        }
+        var effect = Instantiate(deathEffect);
+        effect.transform.position = transform.position;
+        Destroy(gameObject);
     }
 }
