@@ -78,9 +78,7 @@ public class PlayerFire : MonoBehaviour
                 var currentBullet = Instantiate(myBullet);
                 var createPos = gunPos.position + Vector3.right * (i == 0 ? 0.25f : -0.25f);
                 currentBullet.transform.position = createPos;
-                currentBullet.GetComponent<Rigidbody>().MovePosition(createPos);
-
-                currentBullet.tag = "Player";
+                currentBullet.GetComponent<Rigidbody>().MovePosition(createPos);;
                 currentBullet.speed = 15f;
             }
 
@@ -134,8 +132,6 @@ public class PlayerFire : MonoBehaviour
                     var currentBullet = Instantiate(myBullet);
                     currentBullet.transform.position = transform.position;
                     currentBullet.GetComponent<Rigidbody>().MovePosition(transform.position);
-
-                    currentBullet.tag = "Player";
                     currentBullet.speed = 15f;
 
                     currentBullet.transform.rotation = Quaternion.Euler(0, 0, i * degrees);

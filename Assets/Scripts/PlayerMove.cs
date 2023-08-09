@@ -11,6 +11,10 @@ public class PlayerMove : MonoBehaviour
     public GameObject DeathEffect;
 
     public bool playerPosClamp = true;
+    public float botTiming = 0;
+    public int playerBotCount = 0;
+
+    //public bool playerHasBot = false;
 
     public Transform rootTransform;
     public float rotateAmount = 12f;
@@ -71,8 +75,6 @@ public class PlayerMove : MonoBehaviour
         currentRotY = Mathf.Lerp(currentRotY, targetRotY, 25f * Time.deltaTime);
 
         rootTransform.localRotation = Quaternion.Euler(0f, currentRotY, 0f);
-
-
         //Àû µð¹ö±ë
         /*Vector3 enemyPos = EnemyTransform != null ? EnemyTransform.position : Vector3.zero;
         Vector3 playerPos = transform.position;
@@ -86,7 +88,11 @@ public class PlayerMove : MonoBehaviour
         //lineRenderer.SetPosition(0, playerPos);
         //lineRenderer.SetPosition(1, playerPos + toEnemyDir);
 
-
+        botTiming += Time.deltaTime * 50f;
+        if(botTiming > 360)
+        {
+            botTiming = 0;
+        }
     }
 
     private void OnTriggerEnter(Collider other)

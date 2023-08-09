@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     public Bullet enemyBullet;
     public GameObject deathEffect;
     public GameObject Item;
+    public GameObject botItem;
 
     public int hp = 3;
     float chaseMode = 0;
@@ -50,7 +51,6 @@ public class Enemy : MonoBehaviour
     public void Fire()
     {
         var bullet = Instantiate(enemyBullet);
-        bullet.tag = "Enemy";
         bullet.transform.position = transform.position;
         bullet.GetComponent<Rigidbody>().MovePosition(transform.position);
         bullet.transform.up = (playerTransform.position - transform.position).normalized;
@@ -71,6 +71,7 @@ public class Enemy : MonoBehaviour
         if(other.gameObject.layer == 10)
         {
             hp--;
+            if (other.tag == "Missile") hp--;
 
             if (hp <= 0)
             {
@@ -81,9 +82,11 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
-        if(Random.Range(0,10) > 6)
+        var randomNum = Random.Range(0, 10);
+        if (randomNum > 6)
         {
-            var dropItem = Instantiate(Item);
+            randomNum = Random.Range(0, 10);
+            var dropItem = Instantiate(randomNum > 5 ? Item : botItem);
             dropItem.transform.position = transform.position;
         }
         var effect = Instantiate(deathEffect);

@@ -8,6 +8,9 @@ TagManager:
   - DangerZone
   - Item
   - FxTemporaire
+  - BotItem
+  - Bullet
+  - Missile
   layers:
   - Default
   - TransparentFX
