@@ -70,6 +70,7 @@ public class Enemy : MonoBehaviour
     {
         if(other.gameObject.layer == 10)
         {
+            GameManager.instance.attackScore += 10;
             hp--;
             if (other.tag == "Missile") hp--;
 
@@ -91,6 +92,7 @@ public class Enemy : MonoBehaviour
         }
         var effect = Instantiate(deathEffect);
         effect.transform.position = transform.position;
+        GameManager.instance.destroyScore += 100;
         Destroy(gameObject);
     }
 }

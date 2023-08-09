@@ -75,18 +75,6 @@ public class PlayerMove : MonoBehaviour
         currentRotY = Mathf.Lerp(currentRotY, targetRotY, 25f * Time.deltaTime);
 
         rootTransform.localRotation = Quaternion.Euler(0f, currentRotY, 0f);
-        //적 디버깅
-        /*Vector3 enemyPos = EnemyTransform != null ? EnemyTransform.position : Vector3.zero;
-        Vector3 playerPos = transform.position;
-
-        var toEnemyDir = (enemyPos - playerPos).normalized;
-        var toEnemyDist = (enemyPos - playerPos).magnitude;*/
-
-        /*Debug.Log("방향 : " + toEnemyDir + " | 거리 : " +  toEnemyDist);
-        Debug.DrawRay(transform.position, toEnemyDir, Color.yellow);*/
-
-        //lineRenderer.SetPosition(0, playerPos);
-        //lineRenderer.SetPosition(1, playerPos + toEnemyDir);
 
         botTiming += Time.deltaTime * 50f;
         if(botTiming > 360)
@@ -97,14 +85,12 @@ public class PlayerMove : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag != "Item")
+        if(other.tag != "Item" || other.tag != "BotItem")
         {
             hp--;
             if(hp <= 0)
             {
-                var effect = Instantiate(DeathEffect);
-                effect.transform.position = transform.position;
-                Destroy(gameObject);
+                Die();
             }
         }
         else
@@ -120,10 +106,21 @@ public class PlayerMove : MonoBehaviour
             hp--;
             if (hp <= 0)
             {
-                var effect = Instantiate(DeathEffect);
-                effect.transform.position = transform.position;
-                Destroy(gameObject);
+                Die();
             }
         }
+    }
+
+    public void Die()
+    {
+        var currentScore = GameManager.instance.attackScore + GameManager.instance.destroyScore;
+        if(currentScore > PlayerPrefs.GetInt("Best Score"))
+        {
+            PlayerPrefs.SetInt("Best Score", currentScore);
+            GameManager.instance.bestScore = currentScore;
+        }
+        var effect = Instantiate(DeathEffect);
+        effect.transform.position = transform.position;
+        Destroy(gameObject);
     }
 }
