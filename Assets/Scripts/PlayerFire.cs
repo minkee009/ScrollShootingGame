@@ -17,7 +17,7 @@ public class PlayerFire : MonoBehaviour
         {
             Fire(skillLevel);
         }
-        bombCounter = Mathf.Min(bombCounter + Time.deltaTime, 3);
+        bombCounter = Mathf.Min(bombCounter + Time.deltaTime * GameManager.instance.inGameTimeSpeed, 3);
     }
 
     void Fire(int level)
