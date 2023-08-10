@@ -150,7 +150,7 @@ public class GridSystem : MonoBehaviour
     /// </summary>
     /// <param name="node"></param>
     /// <param name="obj"></param>
-    public bool TryDettachObjToNode(Node node, bool destroy = true)
+    public bool TryDettachObjFromNode(Node node, bool destroy = true)
     {
         if (!node.isAttached) return false;
 
