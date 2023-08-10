@@ -3,14 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Enemy
-  - DangerZone
-  - Item
-  - FxTemporaire
-  - Bullet
-  - Missile
-  - BotItem
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -20,12 +13,12 @@ TagManager:
   - UI
   - Player
   - Enemy
-  - DangerZone
-  - ReflectWall
   - PlayerProjectile
   - EnemyProjectile
   - 
   - 
+  - 
+  - Reflect Wall
   - 
   - 
   - 

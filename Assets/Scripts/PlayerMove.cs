@@ -1,126 +1,87 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using System.Diagnostics;
+using System.Timers;
 using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    [Header("이동 속성")]
+    public Rigidbody rb;
     public float speed = 5f;
-    //public Transform EnemyTransform;
-    public Camera MainCamera;
-    public GameObject DeathEffect;
+    public float moveSharpness = 12f;
 
-    public bool playerPosClamp = true;
-    public float botTiming = 0;
-    public int playerBotCount = 0;
-
-    //public bool playerHasBot = false;
-
+    [Header("회전 관련")]
     public Transform rootTransform;
-    public float rotateAmount = 12f;
+    public float rotateAmount = 24f;
 
-    private float targetRotY = 0;
-    private float currentRotY = 0;
+    [Header("위치 제한")]
+    public bool ClampPosXY = false;
 
-    public int hp = 10;
+    [ConditionalHide("ClampPosXY", true)]
+    public float ClampX = 0;
 
-    float clampX = 0;
-    float clampY = 0;
-    
-    //public LineRenderer lineRenderer;
+    [ConditionalHide("ClampPosXY", true)]
+    public float ClampY = 0;
+
+
+    //프라이빗 멤버
+    float targetRotY = 0;
+    float currentRotY = 0;
+    Vector3 currentVelocity = Vector3.zero;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // 뷰포트에서 최대 지점 찾기 (x ,y)
-        var wholeClampPos = MainCamera.ViewportToWorldPoint(Vector3.one);
 
-        // 위치 제한 값 재설정
-        clampX = Mathf.Abs(wholeClampPos.x - 0.5f);
-        clampY = Mathf.Abs(wholeClampPos.y - 0.5f);
-
+        //입력
         float h = (Input.GetKey(KeyCode.RightArrow) ? 1 : 0) + (Input.GetKey(KeyCode.LeftArrow) ? -1 : 0);
         float v = (Input.GetKey(KeyCode.UpArrow) ? 1 : 0) + (Input.GetKey(KeyCode.DownArrow) ? -1 : 0);
 
         Vector3 dir = Vector3.right * h + Vector3.up * v;
+        dir = dir.normalized;
 
-        //이동
-        transform.position += dir * speed * Time.deltaTime;
+        //속도 계산
+        currentVelocity = Vector3.Lerp(currentVelocity, dir * speed * Time.deltaTime * GameManager.instance.inGameTimeSpeed, moveSharpness * Time.deltaTime * GameManager.instance.inGameTimeSpeed);
 
-        if (!playerPosClamp) return;
+        transform.position += currentVelocity;
 
-        if (Mathf.Abs(transform.position.x) > clampX)
+        //위치 제한
+        if (ClampPosXY)
         {
-            int minus = transform.position.x > 0f ? 1 : -1;
+            if (Mathf.Abs(transform.position.x) > ClampX)
+            {
+                var minus = transform.position.x > 0 ? 1 : -1;
 
-            transform.position = new Vector3(clampX * minus, transform.position.y, transform.position.z);
-            h = 0;
+                transform.position = new Vector3(minus * ClampX, transform.position.y, transform.position.z);
+
+                h = 0;
+            }
+
+            if (Mathf.Abs(transform.position.y) > ClampY)
+            {
+                var minus = transform.position.y > 0 ? 1 : -1;
+
+                transform.position = new Vector3(transform.position.x, minus * ClampY, transform.position.z);
+                v = 0;
+            }
         }
-        if (Mathf.Abs(transform.position.y) > clampY)
-        {
-            int minus = transform.position.y > 0f ? 1 : -1;
-
-            transform.position = new Vector3(transform.position.x, clampY * minus, transform.position.z);
-        }
-
+        
+        //회전 설정
         targetRotY = h != 0
             ? (h > 0 ? -rotateAmount : rotateAmount) : 0;
 
-        currentRotY = Mathf.Lerp(currentRotY, targetRotY, 25f * Time.deltaTime);
+        currentRotY = Mathf.Lerp(currentRotY, targetRotY, 25f * Time.deltaTime * GameManager.instance.inGameTimeSpeed);
 
         rootTransform.localRotation = Quaternion.Euler(0f, currentRotY, 0f);
 
-        botTiming += Time.deltaTime * 50f;
-        if(botTiming > 360)
-        {
-            botTiming = 0;
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.tag != "Item" || other.tag != "BotItem")
-        {
-            hp--;
-            if(hp <= 0)
-            {
-                Die();
-            }
-        }
-        else
-        {
-            hp = Mathf.Min(hp + 1,10);
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.tag == "Enemy")
-        {
-            hp--;
-            if (hp <= 0)
-            {
-                Die();
-            }
-        }
-    }
-
-    public void Die()
-    {
-        var currentScore = GameManager.instance.attackScore + GameManager.instance.destroyScore;
-        if(currentScore > PlayerPrefs.GetInt("Best Score"))
-        {
-            PlayerPrefs.SetInt("Best Score", currentScore);
-            GameManager.instance.bestScore = currentScore;
-        }
-        var effect = Instantiate(DeathEffect);
-        effect.transform.position = transform.position;
-        Destroy(gameObject);
+        //강체 오류 방지
+        rb.MovePosition(transform.position);
     }
 }

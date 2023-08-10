@@ -2,134 +2,87 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// 목표 : 사용자 입력(스페이스)를 받아 총알을 만들고 싶다.
 public class PlayerFire : MonoBehaviour
 {
-    public Bullet myBullet;
-    public Transform gunPos;
-    int skillLevel = 0;
-    float bombCounter = 0;
+    public BulletMove bullet;
+    public int skillLevel = 0;
+    public Transform GunPosition;
 
-    //public Transform EnemyTransform;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        bombCounter = 0;
-    }
+    float bombCounter = 3;
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            ExcuteSkill(skillLevel);
+            Fire(skillLevel);
         }
-        bombCounter = Mathf.Min(3, bombCounter + Time.deltaTime);
+        bombCounter = Mathf.Min(bombCounter + Time.deltaTime, 3);
     }
 
-    private void ExcuteSkill(int _skillLevel)
+    void Fire(int level)
     {
-        switch (_skillLevel)
+        switch (level)
         {
             case 0:
-                ExcuteSkill1();
+                FireSkill1();
                 break;
             case 1:
-                ExcuteSkill2();
+                FireSkill2(); 
                 break;
             case 2:
-                ExcuteSkill3();
+                FireSkill2();
+                FireSkill3();
                 break;
             case 3:
-                ExcuteSkill3();
-                ExcuteSkill4();
+                FireSkill2();
+                FireSkill3();
+                FireSkill4();
                 break;
         }
 
-        void ExcuteSkill1()
+        void FireSkill1()
         {
-            var currentBullet = Instantiate(myBullet);
-            currentBullet.transform.position = gunPos.position;
-            currentBullet.GetComponent<Rigidbody>().MovePosition(gunPos.position);
-
-            currentBullet.tag = "Player";
-            currentBullet.speed = 15f;
+            var currentBullet = Instantiate(bullet);
+            currentBullet.transform.position = GunPosition.position;
+            currentBullet.transform.up = Vector3.up;
+            currentBullet.GetComponent<Rigidbody>().MoveRotation(currentBullet.transform.rotation);
         }
-
-        void ExcuteSkill2()
+        void FireSkill2()
+        {
+            for(int i = 0; i < 2; i++)
+            {
+                var currentBullet = Instantiate(bullet);
+                currentBullet.transform.position = GunPosition.position + Vector3.right * (i == 0 ? 0.25f : -0.25f);
+                currentBullet.transform.up = Vector3.up;
+                currentBullet.GetComponent<Rigidbody>().MoveRotation(currentBullet.transform.rotation);
+            }
+        }
+        void FireSkill3()
         {
             for (int i = 0; i < 2; i++)
             {
-                var currentBullet = Instantiate(myBullet);
-                var createPos = gunPos.position + Vector3.right * (i == 0 ? 0.25f : -0.25f);
+                var currentBullet = Instantiate(bullet);
+                var createPos = GunPosition.position + Vector3.right * (i == 0 ? 0.5f : -0.5f);
+
                 currentBullet.transform.position = createPos;
                 currentBullet.GetComponent<Rigidbody>().MovePosition(createPos);
-
-                currentBullet.tag = "Player";
-                currentBullet.speed = 15f;
-            }
-        }
-
-        void ExcuteSkill3()
-        {
-            for (int i = 0; i < 2; i++)
-            {
-                var currentBullet = Instantiate(myBullet);
-                var createPos = gunPos.position + Vector3.right * (i == 0 ? 0.25f : -0.25f);
-                currentBullet.transform.position = createPos;
-                currentBullet.GetComponent<Rigidbody>().MovePosition(createPos);;
-                currentBullet.speed = 15f;
-            }
-
-            for (int i =0; i < 2; i++)
-            {
-                var currentBullet = Instantiate(myBullet);
-                var createPos = gunPos.position + Vector3.right * (i == 0 ? 0.5f : -0.5f);
-                currentBullet.transform.position = createPos;
-                currentBullet.GetComponent<Rigidbody>().MovePosition(createPos);
+                
                 currentBullet.transform.rotation = Quaternion.Euler(0, 0, (i == 0 ? -30 : 30));
                 currentBullet.GetComponent<Rigidbody>().MoveRotation(currentBullet.transform.rotation);
                 currentBullet.reflect = true;
             }
-
-            
-
-            /*for (int i = 0; i < 3; i++)
-            {
-                var currentBullet = Instantiate(myBullet);
-                var createPos = gunPos.position + Vector3.right * (-0.5f + i * 0.5f);
-                currentBullet.transform.position = createPos;
-                currentBullet.GetComponent<Rigidbody>().MovePosition(createPos);
-
-                if(i == 0)
-                {
-                    currentBullet.transform.rotation = Quaternion.Euler(0, 0, 30);
-                    currentBullet.GetComponent<Rigidbody>().MoveRotation(currentBullet.transform.rotation);
-                    currentBullet.reflect = true;
-                }
-                if (i == 2)
-                {
-                    currentBullet.transform.rotation = Quaternion.Euler(0, 0, -30);
-                    currentBullet.GetComponent<Rigidbody>().MoveRotation(currentBullet.transform.rotation);
-                    currentBullet.reflect = true;
-                }
-
-                currentBullet.tag = "Player";
-                currentBullet.speed = 15f;
-            }*/
         }
-
-        void ExcuteSkill4()
+        void FireSkill4()
         {
             int degrees = 15;
             int numOfBullet = 360 / degrees;
 
-            if(bombCounter >= 3)
+            if (bombCounter >= 3)
             {
                 for (int i = 0; i < numOfBullet; i++)
                 {
-                    var currentBullet = Instantiate(myBullet);
+                    var currentBullet = Instantiate(bullet);
                     currentBullet.transform.position = transform.position;
                     currentBullet.GetComponent<Rigidbody>().MovePosition(transform.position);
                     currentBullet.speed = 15f;
@@ -141,16 +94,10 @@ public class PlayerFire : MonoBehaviour
                 }
                 bombCounter = 0;
             }
-            
+
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.tag == "Item")
-        {
-            skillLevel = Mathf.Min(skillLevel + 1, 3);
-            Destroy(other.gameObject);
-        }
-    }
+
+
 }
