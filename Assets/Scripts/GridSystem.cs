@@ -6,12 +6,12 @@ using UnityEngine.UIElements.Experimental;
 
 public class GridSystem : MonoBehaviour
 {
-    public GameObject gridNode;
+    [Header("그리드 속성")]
     public Transform gridPivot;
-
     public int gridWidth;
     public int gridHeight;
 
+    [Header("기타")]
     public Camera mainCam;
 
     public Vector3 correctMousePos
@@ -201,7 +201,7 @@ public class GridSystem : MonoBehaviour
 
 public class Node
 {
-    public bool isAttached;
     public Vector3 position;
+    public bool isAttached;
     public GameObject attachedObject;
 }
