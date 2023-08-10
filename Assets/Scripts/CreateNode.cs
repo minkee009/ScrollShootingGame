@@ -5,7 +5,6 @@ using UnityEngine;
 public class CreateNode : MonoBehaviour
 {
     public GameObject node;
-    public Camera mainCam;
     public GridSystem gridSystem;
 
     GameObject _nativeNode;
@@ -21,18 +20,16 @@ public class CreateNode : MonoBehaviour
     {
         if(_nativeNode != null)
         {
-            var correctMousePos = mainCam.ScreenToWorldPoint(Input.mousePosition + Vector3.forward * 15f);
-            
-            if (gridSystem.TryGetMousePosOnGrid(correctMousePos,out Vector3 onGridPos))
+            if (gridSystem.TryGetMousePosOnGrid(gridSystem.correctMousePos,out Vector3 onGridPos))
             {
                 _nativeNode.transform.position = onGridPos;
-                var currentNode = gridSystem.GetNodeOnGrid(gridSystem.GetGridMapIndex(correctMousePos));
+                var currentNode = gridSystem.GetNodeInGrid(gridSystem.GetGridMapIndex(gridSystem.correctMousePos));
 
                 if (Input.GetMouseButtonDown(0))
                 {
                     if (!currentNode.isAttached)
                     {
-                        gridSystem.AttachObjToNode(currentNode, _nativeNode);
+                        gridSystem.TryAttachObjToNode(currentNode, _nativeNode);
                         _nativeNode = null;
                     }
                     else
@@ -45,7 +42,7 @@ public class CreateNode : MonoBehaviour
             }
             else
             {
-                _nativeNode.transform.position = correctMousePos;
+                _nativeNode.transform.position = gridSystem.correctMousePos;
             }
         }
     }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UIElements.Experimental;
 
 public class GridSystem : MonoBehaviour
 {
@@ -13,44 +14,16 @@ public class GridSystem : MonoBehaviour
 
     public Camera mainCam;
 
-    public Node[,] gridMap;
-    //public Transform debugPos;
-    //public Transform debugPos2;
+    public Vector3 correctMousePos
+    {
+        get { return mainCam.ScreenToWorldPoint(Input.mousePosition + Vector3.forward * 15f); }
+    }
 
-    // Start is called before the first frame update
+    public Node[,] gridMap { get; private set; }
+
     void Start()
     {
         CreateGrid();
-    }
-
-    private void OnDrawGizmos()
-    {
-        if (gridMap == null) return;
-
-        Gizmos.color = Color.red;
-
-        Vector3 minPos = new Vector3(-0.5f, -0.5f, 0) + gridPivot.position;
-        Vector3 maxPos = gridPivot.position + new Vector3(gridWidth - 0.5f,gridHeight - 0.5f, 0);
-
-        Gizmos.DrawSphere(minPos, 0.25f);
-        Gizmos.DrawSphere(maxPos, 0.25f);
-
-        for (int i = 0; i < gridWidth; i++)
-        {
-            for (int j = 0; j < gridHeight; j++)
-            {
-                Vector3 worldPos = new Vector3(i, j, 0) + gridPivot.position + Vector3.forward * 1.5f;
-
-                //디버깅용 가시화
-                Gizmos.color = Color.white;
-                Gizmos.DrawCube(worldPos, Vector3.one);
-            }
-        }
-
-        TryGetMousePosOnGrid(mainCam.ScreenToWorldPoint(Input.mousePosition),out Vector3 onPos);
-
-        Gizmos.color = Color.red;
-        Gizmos.DrawCube(onPos, Vector3.one);
     }
 
     void CreateGrid()
@@ -63,10 +36,6 @@ public class GridSystem : MonoBehaviour
             {
                 Vector3 worldPos = new Vector3 (i , j , 0) + gridPivot.position;
                 
-                //디버깅용 가시화
-                /*var g = Instantiate(gridNode,transform);
-                g.transform.position = worldPos;*/
-
                 gridMap[i, j] = new Node()
                 {
                     position = worldPos,
@@ -89,8 +58,8 @@ public class GridSystem : MonoBehaviour
 
         if (IsMouseOnGrid(mousePos))
         {
-            var whs = GetGridMapIndex(mousePos);
-            onGridPos = gridMap[whs[0], whs[1]].position;
+            var gridIndex = GetGridMapIndex(mousePos);
+            onGridPos = gridMap[gridIndex[0], gridIndex[1]].position;
             return true;
         }
 
@@ -142,12 +111,10 @@ public class GridSystem : MonoBehaviour
         mousePos.x -= (gridPivot.position.x - 0.5f);
         mousePos.y -= (gridPivot.position.y - 0.5f);
 
-        var w = (int)Mathf.Clamp(mousePos.x, 0f, gridWidth - 1);
-        var h = (int)Mathf.Clamp(mousePos.y, 0f, gridHeight - 1);
+        var x = (int)Mathf.Clamp(mousePos.x, 0f, gridWidth - 1);
+        var y = (int)Mathf.Clamp(mousePos.y, 0f, gridHeight - 1);
 
-        int[] gridIndex = new int[2];
-        gridIndex[0] = w;
-        gridIndex[1] = h;
+        int[] gridIndex = { x , y };
 
         return gridIndex;
     }
@@ -157,7 +124,7 @@ public class GridSystem : MonoBehaviour
     /// </summary>
     /// <param name="gridIndex"></param>
     /// <returns></returns>
-    public Node GetNodeOnGrid(int[] gridIndex)
+    public Node GetNodeInGrid(int[] gridIndex)
     {
         return gridMap[gridIndex[0],gridIndex[1]];
     }
@@ -167,14 +134,15 @@ public class GridSystem : MonoBehaviour
     /// </summary>
     /// <param name="node"></param>
     /// <param name="obj"></param>
-    public void AttachObjToNode(Node node, GameObject obj)
+    public bool TryAttachObjToNode(Node node, GameObject obj)
     {
-        if (node.isAttached) return;
+        if (node.isAttached) return false;
         
         node.isAttached = true;
         node.attachedObject = obj;
 
         node.attachedObject.transform.position = node.position;
+        return true;
     }
 
     /// <summary>
@@ -182,9 +150,9 @@ public class GridSystem : MonoBehaviour
     /// </summary>
     /// <param name="node"></param>
     /// <param name="obj"></param>
-    public void DettachObjToNode(Node node, bool destroy = true)
+    public bool TryDettachObjToNode(Node node, bool destroy = true)
     {
-        if (!node.isAttached) return;
+        if (!node.isAttached) return false;
 
         if (destroy)
         {
@@ -193,7 +161,42 @@ public class GridSystem : MonoBehaviour
 
         node.isAttached = false;
         node.attachedObject = null;
+        return true;
     }
+
+    private void OnDrawGizmos()
+    {
+        if (gridMap == null) return;
+
+        Gizmos.color = Color.red;
+
+        Vector3 minPos = new Vector3(-0.5f, -0.5f, 0) + gridPivot.position;
+        Vector3 maxPos = gridPivot.position + new Vector3(gridWidth - 0.5f, gridHeight - 0.5f, 0);
+
+        Gizmos.DrawSphere(minPos, 0.25f);
+        Gizmos.DrawSphere(maxPos, 0.25f);
+
+        for (int i = 0; i < gridWidth; i++)
+        {
+            for (int j = 0; j < gridHeight; j++)
+            {
+                Vector3 worldPos = new Vector3(i, j, 0) + gridPivot.position + Vector3.forward * 1.5f;
+
+                //디버깅용 가시화
+                Gizmos.color = Color.white;
+                Gizmos.DrawCube(worldPos, Vector3.one);
+            }
+        }
+
+        if(!TryGetMousePosOnGrid(mainCam.ScreenToWorldPoint(Input.mousePosition), out Vector3 onPos))
+        {
+            onPos = Vector3.one * 1080f;
+        }
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawCube(onPos, Vector3.one);
+    }
+
 }
 
 public class Node
