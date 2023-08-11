@@ -6,13 +6,15 @@ public class PlayerFire : MonoBehaviour
 {
     public BulletMove bullet;
     public int skillLevel = 0;
-    public Transform GunPosition;
+    public Transform gunPivot;
 
     float bombCounter = 3;
 
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.instance.currentGameState != CurrentGameState.Play) return;
+             
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Fire(skillLevel);
@@ -44,7 +46,7 @@ public class PlayerFire : MonoBehaviour
         void FireSkill1()
         {
             var currentBullet = Instantiate(bullet);
-            currentBullet.transform.position = GunPosition.position;
+            currentBullet.transform.position = gunPivot.position;
             currentBullet.transform.up = Vector3.up;
             currentBullet.GetComponent<Rigidbody>().MoveRotation(currentBullet.transform.rotation);
         }
@@ -53,7 +55,7 @@ public class PlayerFire : MonoBehaviour
             for(int i = 0; i < 2; i++)
             {
                 var currentBullet = Instantiate(bullet);
-                currentBullet.transform.position = GunPosition.position + Vector3.right * (i == 0 ? 0.25f : -0.25f);
+                currentBullet.transform.position = gunPivot.position + Vector3.right * (i == 0 ? 0.25f : -0.25f);
                 currentBullet.transform.up = Vector3.up;
                 currentBullet.GetComponent<Rigidbody>().MoveRotation(currentBullet.transform.rotation);
             }
@@ -63,7 +65,7 @@ public class PlayerFire : MonoBehaviour
             for (int i = 0; i < 2; i++)
             {
                 var currentBullet = Instantiate(bullet);
-                var createPos = GunPosition.position + Vector3.right * (i == 0 ? 0.5f : -0.5f);
+                var createPos = gunPivot.position + Vector3.right * (i == 0 ? 0.5f : -0.5f);
 
                 currentBullet.transform.position = createPos;
                 currentBullet.GetComponent<Rigidbody>().MovePosition(createPos);

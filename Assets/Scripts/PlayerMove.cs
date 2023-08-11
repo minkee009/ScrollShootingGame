@@ -12,7 +12,7 @@ public class PlayerMove : MonoBehaviour
     public float moveSharpness = 12f;
 
     [Header("회전 관련")]
-    public Transform rootTransform;
+    public Transform rootPivot;
     public float rotateAmount = 24f;
 
     [Header("위치 제한")]
@@ -48,9 +48,10 @@ public class PlayerMove : MonoBehaviour
         dir = dir.normalized;
 
         //속도 계산
-        currentVelocity = Vector3.Lerp(currentVelocity, dir * speed * Time.deltaTime * GameManager.instance.inGameTimeSpeed, moveSharpness * Time.deltaTime * GameManager.instance.inGameTimeSpeed);
+        currentVelocity = Vector3.Lerp(currentVelocity, speed * Time.deltaTime * GameManager.instance.inGameTimeSpeed * dir, moveSharpness * Time.deltaTime * GameManager.instance.inGameTimeSpeed);
 
-        transform.position += currentVelocity;
+        if(GameManager.instance.currentGameState == CurrentGameState.Play)
+            transform.position += currentVelocity;
 
         //위치 제한
         if (ClampPosXY)
@@ -69,7 +70,7 @@ public class PlayerMove : MonoBehaviour
                 var minus = transform.position.y > 0 ? 1 : -1;
 
                 transform.position = new Vector3(transform.position.x, minus * ClampY, transform.position.z);
-                v = 0;
+                //v = 0;
             }
         }
         
@@ -79,7 +80,7 @@ public class PlayerMove : MonoBehaviour
 
         currentRotY = Mathf.Lerp(currentRotY, targetRotY, 25f * Time.deltaTime * GameManager.instance.inGameTimeSpeed);
 
-        rootTransform.localRotation = Quaternion.Euler(0f, currentRotY, 0f);
+        rootPivot.localRotation = Quaternion.Euler(0f, currentRotY, 0f);
 
         //강체 오류 방지
         rb.MovePosition(transform.position);

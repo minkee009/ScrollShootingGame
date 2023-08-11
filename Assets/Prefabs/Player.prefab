@@ -35,7 +35,7 @@ Transform:
   - {fileID: 8987478736627361796}
   - {fileID: 9011409981001035585}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &2106059734572851080
 BoxCollider:
@@ -100,7 +100,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   speed: 5
   moveSharpness: 12
-  rootTransform: {fileID: 8987478736627361796}
+  rootPivot: {fileID: 8987478736627361796}
   rotateAmount: 24
   ClampPosXY: 1
   ClampX: 4.1
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 7029391759470123439, guid: 6e3c90bd8baff6443bbe2b2dbba50de5, type: 3}
   skillLevel: 0
-  GunPosition: {fileID: 9011409981001035585}
+  gunPivot: {fileID: 9011409981001035585}
 --- !u!1 &7159541063195660461
 GameObject:
   m_ObjectHideFlags: 0

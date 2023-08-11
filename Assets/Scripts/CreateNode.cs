@@ -7,25 +7,28 @@ public class CreateNode : MonoBehaviour
     public GameObject node;
     public GridSystem gridSystem;
 
-    GameObject _nativeNode;
+    private bool readyToCreate;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    GameObject _nativeNode;
 
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.instance.currentGameState == CurrentGameState.Play) return;
+
+        if (readyToCreate && Input.GetMouseButtonDown(0))
+        {
+            CreateNodeInRuntime();
+        }
+
         if(_nativeNode != null)
         {
-            if (gridSystem.TryGetMousePosOnGrid(gridSystem.correctMousePos,out Vector3 onGridPos))
+            if (gridSystem.TryGetMousePosOnGrid(gridSystem.CorrectMousePos,out Vector3 onGridPos))
             {
                 _nativeNode.transform.position = onGridPos;
-                var currentNode = gridSystem.GetNodeInGrid(gridSystem.GetGridMapIndex(gridSystem.correctMousePos));
+                var currentNode = gridSystem.GetNodeInGrid(gridSystem.GetGridMapIndex(gridSystem.CorrectMousePos));
 
-                if (Input.GetMouseButtonDown(0))
+                if (!Input.GetMouseButton(0))
                 {
                     if (!currentNode.isAttached)
                     {
@@ -37,21 +40,33 @@ public class CreateNode : MonoBehaviour
                         Destroy(_nativeNode);
                     }
                 }
-                
-
             }
             else
             {
-                _nativeNode.transform.position = gridSystem.correctMousePos;
+                _nativeNode.transform.position = gridSystem.CorrectMousePos;
+                if (Input.GetMouseButtonUp(0))
+                {
+                    Destroy(_nativeNode);
+                }
             }
         }
     }
 
-    public void CreateNodeInRuntime()
+    void CreateNodeInRuntime()
     {
         if(_nativeNode  == null)
         {
             _nativeNode = Instantiate(node, Input.mousePosition + Vector3.forward * 15f, Quaternion.identity);
         }
+    }
+
+    public void OnMouseEvent()
+    {
+        readyToCreate = true;
+    }
+
+    public void ExitMouseEvent()
+    {
+        readyToCreate = false;
     }
 }

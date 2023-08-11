@@ -14,34 +14,39 @@ public class GridSystem : MonoBehaviour
     [Header("±‚≈∏")]
     public Camera mainCam;
 
-    public Vector3 correctMousePos
+    public Vector3 CorrectMousePos
     {
         get { return mainCam.ScreenToWorldPoint(Input.mousePosition + Vector3.forward * 15f); }
     }
 
-    public Node[,] gridMap { get; private set; }
+    public Node[,] GridMap { get; private set; }
 
-    void Start()
+    public void CreateGrid()
     {
-        CreateGrid();
-    }
-
-    void CreateGrid()
-    {
-        gridMap = new Node[gridWidth, gridHeight];
+        GridMap = new Node[gridWidth, gridHeight];
 
         for(int i = 0; i< gridWidth; i++)
         {
             for(int j = 0; j< gridHeight; j++)
             {
                 Vector3 worldPos = new Vector3 (i , j , 0) + gridPivot.position;
-                
-                gridMap[i, j] = new Node()
+
+                GridMap[i, j] = new Node(worldPos, false, null);
+            }
+        }
+    }
+
+    public void ResetAllObjPosInNode()
+    {
+        for (int i = 0; i < gridWidth; i++)
+        {
+            for (int j = 0; j < gridHeight; j++)
+            {
+                var currentNode = GridMap[i, j];
+                if (currentNode.isAttached)
                 {
-                    position = worldPos,
-                    isAttached = false,
-                    attachedObject = null
-                };
+                    currentNode.attachedObject.transform.position = currentNode.position;
+                }
             }
         }
     }
@@ -59,7 +64,7 @@ public class GridSystem : MonoBehaviour
         if (IsMouseOnGrid(mousePos))
         {
             var gridIndex = GetGridMapIndex(mousePos);
-            onGridPos = gridMap[gridIndex[0], gridIndex[1]].position;
+            onGridPos = GridMap[gridIndex[0], gridIndex[1]].position;
             return true;
         }
 
@@ -74,7 +79,7 @@ public class GridSystem : MonoBehaviour
         if (IsMouseOnGrid(mousePos))
         {
             gridIndex = GetGridMapIndex(mousePos);
-            onGridPos = gridMap[gridIndex[0], gridIndex[1]].position;
+            onGridPos = GridMap[gridIndex[0], gridIndex[1]].position;
             return true;
         }
 
@@ -126,7 +131,19 @@ public class GridSystem : MonoBehaviour
     /// <returns></returns>
     public Node GetNodeInGrid(int[] gridIndex)
     {
-        return gridMap[gridIndex[0],gridIndex[1]];
+        return GridMap[gridIndex[0],gridIndex[1]];
+    }
+
+    public bool TryGetAttachedNodeInGrid(ref Node node)
+    {
+        var currentNode = GetNodeInGrid(GetGridMapIndex(CorrectMousePos));
+
+        if (currentNode.isAttached)
+        {
+            node = currentNode;
+            return true;
+        }
+        return false;
     }
 
     /// <summary>
@@ -166,7 +183,7 @@ public class GridSystem : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        if (gridMap == null) return;
+        if (GridMap == null) return;
 
         Gizmos.color = Color.red;
 
@@ -204,4 +221,11 @@ public class Node
     public Vector3 position;
     public bool isAttached;
     public GameObject attachedObject;
+
+    public Node (Vector3 position, bool isAttached, GameObject attachedObject)
+    {
+        this.position = position;
+        this.isAttached = isAttached;
+        this.attachedObject = attachedObject;
+    }
 }
