@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    [Range(0f,2f)]
     public float inGameTimeSpeed = 1.0f;
 
     public Vector2 playerInitPos;
