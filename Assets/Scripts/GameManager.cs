@@ -12,12 +12,13 @@ public class GameManager : MonoBehaviour
     public float inGameTimeSpeed = 1.0f;
 
     public Vector2 playerInitPos;
-
     public GridSystem gridSystem;
 
     public GameObject enemyCreaterPrefab;
     public GameObject playerPrefab;
     public GameObject enemyPrefab;
+
+    public Transform PlayerTransform;
 
     public CurrentGameState currentGameState;
 
@@ -49,6 +50,7 @@ public class GameManager : MonoBehaviour
             int[] playerIndex = {  (int)Mathf.Max(0, playerInitPos.x - 1), (int)Mathf.Max(0, playerInitPos.y - 1) };
             Node playerNode = gridSystem.GetNodeInGrid(playerIndex);
             var player = Instantiate(playerPrefab);
+            PlayerTransform = player.transform;
             gridSystem.TryAttachObjToNode(playerNode, player);
             Act_OnGameReset += gridSystem.ResetAllObjPosInNode;
         }

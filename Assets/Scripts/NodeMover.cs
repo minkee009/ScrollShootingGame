@@ -32,6 +32,7 @@ public class NodeMover : MonoBehaviour
         if (_isSelected)
         {
             var pos = Vector3.zero;
+            
             if (!gridSystem.TryGetMousePosOnGrid(gridSystem.CorrectMousePos, out pos))
             {
                 pos = gridSystem.CorrectMousePos;
@@ -49,8 +50,8 @@ public class NodeMover : MonoBehaviour
                     {
                         gridSystem.TryDettachObjFromNode(_selectedNode, false);
                         gridSystem.TryAttachObjToNode(getNodeInfo, _selectedObject);
-                        _selectedNode = null;
-                        _selectedObject = null;
+                        //_selectedNode = null;
+                        //_selectedObject = null;
                         return;
                     }
                 }
