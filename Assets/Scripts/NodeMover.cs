@@ -18,7 +18,7 @@ public class NodeMover : MonoBehaviour
         if (GameManager.instance.currentGameState == CurrentGameState.Play) return;
 
         if (!_isSelected 
-            && gridSystem.IsMouseOnGrid(gridSystem.CorrectMousePos) 
+            && gridSystem.IsGlobalPosOnGrid(gridSystem.CorrectMousePos) 
             && Input.GetMouseButtonDown(0))
         {
             if(gridSystem.TryGetAttachedNodeInGrid(ref _selectedNode))
@@ -33,7 +33,7 @@ public class NodeMover : MonoBehaviour
         {
             var pos = Vector3.zero;
             
-            if (!gridSystem.TryGetMousePosOnGrid(gridSystem.CorrectMousePos, out pos))
+            if (!gridSystem.TryGetGlobalPosOnGrid(gridSystem.CorrectMousePos, out pos))
             {
                 pos = gridSystem.CorrectMousePos;
             }
@@ -43,7 +43,7 @@ public class NodeMover : MonoBehaviour
             if (!Input.GetMouseButton(0))
             {
                 _isSelected = false;
-                if (gridSystem.IsMouseOnGrid(gridSystem.CorrectMousePos))
+                if (gridSystem.IsGlobalPosOnGrid(gridSystem.CorrectMousePos))
                 {
                     var getNodeInfo = gridSystem.GetNodeInGrid(gridSystem.GetGridMapIndex(gridSystem.CorrectMousePos));
                     if (!getNodeInfo.isAttached)

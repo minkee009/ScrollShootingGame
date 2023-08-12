@@ -20,7 +20,9 @@ public class BulletMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var speedMag = speed * Time.deltaTime * GameManager.instance.inGameTimeSpeed;
+        var deltaTime = Time.deltaTime * GameManager.instance.inGameTimeSpeed;
+
+        var speedMag = speed * deltaTime;
 
         if (reflect && Physics.Raycast(new Ray(transform.position, transform.up), out RaycastHit hit, speedMag + 0.02f, reflectMask, QueryTriggerInteraction.Ignore))
         {
@@ -39,7 +41,7 @@ public class BulletMove : MonoBehaviour
             return;
         }
 
-        transform.position += transform.up * speed * Time.deltaTime * GameManager.instance.inGameTimeSpeed;
+        transform.position += transform.up * speed * deltaTime;
         rb.MovePosition(transform.position);
     }
 }

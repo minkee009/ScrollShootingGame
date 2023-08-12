@@ -13,13 +13,15 @@ public class PlayerFire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        var deltaTime = Time.deltaTime * GameManager.instance.inGameTimeSpeed;
+
         if (GameManager.instance.currentGameState != CurrentGameState.Play) return;
              
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             Fire(skillLevel);
         }
-        bombCounter = Mathf.Min(bombCounter + Time.deltaTime * GameManager.instance.inGameTimeSpeed, 3);
+        bombCounter = Mathf.Min(bombCounter + deltaTime, 3);
     }
 
     void Fire(int level)

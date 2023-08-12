@@ -23,7 +23,7 @@ public class CreateNode : MonoBehaviour
 
         if(_nativeNode != null)
         {
-            if (gridSystem.TryGetMousePosOnGrid(gridSystem.CorrectMousePos,out Vector3 onGridPos))
+            if (gridSystem.TryGetGlobalPosOnGrid(gridSystem.CorrectMousePos,out Vector3 onGridPos))
             {
                 _nativeNode.transform.position = onGridPos;
                 var currentNode = gridSystem.GetNodeInGrid(gridSystem.GetGridMapIndex(gridSystem.CorrectMousePos));

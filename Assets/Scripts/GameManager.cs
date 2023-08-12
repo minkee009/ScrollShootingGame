@@ -48,8 +48,7 @@ public class GameManager : MonoBehaviour
         if (gridSystem != null)
         {
             gridSystem.CreateGrid();
-            int[] playerIndex = {  (int)Mathf.Max(0, playerInitPos.x - 1), (int)Mathf.Max(0, playerInitPos.y - 1) };
-            Node playerNode = gridSystem.GetNodeInGrid(playerIndex);
+            Node playerNode = gridSystem.GetNodeInGrid(playerInitPos);
             var player = Instantiate(playerPrefab);
             PlayerTransform = player.transform;
             gridSystem.TryAttachObjToNode(playerNode, player);
