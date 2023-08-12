@@ -7,46 +7,45 @@ public class CreateNode : MonoBehaviour
     public GameObject node;
     public GridSystem gridSystem;
 
-    private bool readyToCreate;
-
-    GameObject _nativeNode;
+    bool _readyToCreate;
+    GameObject _currentNode;
 
     // Update is called once per frame
     void Update()
     {
         if (GameManager.instance.currentGameState == CurrentGameState.Play) return;
 
-        if (readyToCreate && Input.GetMouseButtonDown(0))
+        if (_readyToCreate && Input.GetMouseButtonDown(0))
         {
             CreateNodeInRuntime();
         }
 
-        if(_nativeNode != null)
+        if(_currentNode != null)
         {
             if (gridSystem.TryGetGlobalPosOnGrid(gridSystem.CorrectMousePos,out Vector3 onGridPos))
             {
-                _nativeNode.transform.position = onGridPos;
+                _currentNode.transform.position = onGridPos;
                 var currentNode = gridSystem.GetNodeInGrid(gridSystem.GetGridMapIndex(gridSystem.CorrectMousePos));
 
                 if (!Input.GetMouseButton(0))
                 {
                     if (!currentNode.isAttached)
                     {
-                        gridSystem.TryAttachObjToNode(currentNode, _nativeNode);
-                        _nativeNode = null;
+                        gridSystem.TryAttachObjToNode(currentNode, _currentNode);
+                        _currentNode = null;
                     }
                     else
                     {
-                        Destroy(_nativeNode);
+                        Destroy(_currentNode);
                     }
                 }
             }
             else
             {
-                _nativeNode.transform.position = gridSystem.CorrectMousePos;
+                _currentNode.transform.position = gridSystem.CorrectMousePos;
                 if (Input.GetMouseButtonUp(0))
                 {
-                    Destroy(_nativeNode);
+                    Destroy(_currentNode);
                 }
             }
         }
@@ -54,19 +53,19 @@ public class CreateNode : MonoBehaviour
 
     void CreateNodeInRuntime()
     {
-        if(_nativeNode  == null)
+        if(_currentNode == null)
         {
-            _nativeNode = Instantiate(node, Input.mousePosition + Vector3.forward * 15f, Quaternion.identity);
+            _currentNode = Instantiate(node, Input.mousePosition + Vector3.forward * 15f, Quaternion.identity);
         }
     }
 
     public void OnMouseEvent()
     {
-        readyToCreate = true;
+        _readyToCreate = true;
     }
 
     public void ExitMouseEvent()
     {
-        readyToCreate = false;
+        _readyToCreate = false;
     }
 }

@@ -36,7 +36,6 @@ public class PlayerMove : MonoBehaviour
     float _currentH = 0;
     Vector3 _currentVelocity = Vector3.zero;
     float _dogeTimer = 0;
-    
     bool _isDodge = false;
 
     // Start is called before the first frame update

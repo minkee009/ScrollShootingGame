@@ -310,7 +310,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.095452115, g: 0.10602576, b: 0.122641504, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -401,11 +401,11 @@ RectTransform:
   - {fileID: 1521369644}
   m_Father: {fileID: 1004555544}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -315.16, y: -101.7}
-  m_SizeDelta: {x: 44.2746, y: 37.0136}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 2, y: 6}
+  m_SizeDelta: {x: 44.274597, y: 37.013596}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &638856568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -568,7 +568,8 @@ MonoBehaviour:
   enemyCreaterPrefab: {fileID: 0}
   playerPrefab: {fileID: 3234354569247444956, guid: bd383a2834e46f847be2a69de856c5b3, type: 3}
   enemyPrefab: {fileID: 0}
-  PlayerTransform: {fileID: 0}
+  playerTransform: {fileID: 0}
+  mainCam: {fileID: 187214717}
   currentGameState: 0
 --- !u!4 &712578469
 Transform:
@@ -648,22 +649,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &889397071
-Transform:
+--- !u!224 &889397071
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 889397070}
-  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -232.35905, y: 63.63376, z: 0.35947776}
+  m_LocalPosition: {x: 0, y: 0, z: 0.35947776}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1568132357}
   m_Father: {fileID: 1004555544}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -24, y: 28}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &889397072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1277,7 +1282,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1568132356}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.35947776}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1286,7 +1291,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -82.540955, y: 106.86624}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 44.2746, y: 37.0136}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1568132359

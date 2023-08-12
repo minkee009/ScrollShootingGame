@@ -19,7 +19,8 @@ public class GameManager : MonoBehaviour
     public GameObject playerPrefab;
     public GameObject enemyPrefab;
 
-    public Transform PlayerTransform;
+    public Transform playerTransform;
+    public Camera mainCam;
 
     public CurrentGameState currentGameState;
 
@@ -50,7 +51,7 @@ public class GameManager : MonoBehaviour
             gridSystem.CreateGrid();
             Node playerNode = gridSystem.GetNodeInGrid(playerInitPos);
             var player = Instantiate(playerPrefab);
-            PlayerTransform = player.transform;
+            playerTransform = player.transform;
             gridSystem.TryAttachObjToNode(playerNode, player);
             Act_OnGameReset += gridSystem.ResetAllObjPosInNode;
         }
@@ -62,6 +63,7 @@ public class GameManager : MonoBehaviour
     {
         Act_OnGameReset?.Invoke();
         currentGameState = CurrentGameState.Pause;
+        mainCam.clearFlags = CameraClearFlags.Skybox;
     }
 
     public void PlayGame()
@@ -69,6 +71,7 @@ public class GameManager : MonoBehaviour
         Act_OnGamePlay?.Invoke();
         inGameTimeSpeed = 1.0f;
         currentGameState = CurrentGameState.Play;
+        mainCam.clearFlags = CameraClearFlags.SolidColor;
     }
 
     public void PauseGame()
@@ -76,5 +79,6 @@ public class GameManager : MonoBehaviour
         Act_OnGamePause?.Invoke();
         inGameTimeSpeed = 0.0f;
         currentGameState = CurrentGameState.Pause;
+        mainCam.clearFlags = CameraClearFlags.Skybox;
     }
 }
