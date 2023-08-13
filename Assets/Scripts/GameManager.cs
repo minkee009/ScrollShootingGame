@@ -28,7 +28,9 @@ public class GameManager : MonoBehaviour
     public UnityAction Act_OnGamePause;
     public UnityAction Act_OnGameReset;
 
-    public void Awake()
+    public float _targetViewSize = 0f;
+
+    private void Awake()
     {
         if (instance == null)
         {
@@ -44,7 +46,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void Start()
+    private void Start()
     {
         if (gridSystem != null)
         {
@@ -59,11 +61,17 @@ public class GameManager : MonoBehaviour
         PauseGame();
     }
 
+    private void Update()
+    {
+        mainCam.orthographicSize = Mathf.Lerp(mainCam.orthographicSize, _targetViewSize, Time.deltaTime * 18f);
+    }
+
     public void ResetGame()
     {
         Act_OnGameReset?.Invoke();
         currentGameState = CurrentGameState.Pause;
         mainCam.clearFlags = CameraClearFlags.Skybox;
+        _targetViewSize = 12;
     }
 
     public void PlayGame()
@@ -72,6 +80,7 @@ public class GameManager : MonoBehaviour
         inGameTimeSpeed = 1.0f;
         currentGameState = CurrentGameState.Play;
         mainCam.clearFlags = CameraClearFlags.SolidColor;
+        _targetViewSize = 10;
     }
 
     public void PauseGame()
@@ -80,5 +89,6 @@ public class GameManager : MonoBehaviour
         inGameTimeSpeed = 0.0f;
         currentGameState = CurrentGameState.Pause;
         mainCam.clearFlags = CameraClearFlags.Skybox;
+        _targetViewSize = 12;
     }
 }

@@ -106,7 +106,7 @@ MonoBehaviour:
   dodgeTime: 0.2
   dodgeReadyTime: 1.5
   ClampPosXY: 1
-  ClampX: 4.1
+  ClampX: 4
   ClampY: 9.5
 --- !u!114 &3356808229960862723
 MonoBehaviour:

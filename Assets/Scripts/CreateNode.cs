@@ -5,7 +5,9 @@ using UnityEngine;
 public class CreateNode : MonoBehaviour
 {
     public GameObject node;
+    public GameObject uiButton;
     public GridSystem gridSystem;
+    public ChangeDestroyZoneImage changeDestroy;
 
     bool _readyToCreate;
     GameObject _currentNode;
@@ -13,7 +15,9 @@ public class CreateNode : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.instance.currentGameState == CurrentGameState.Play) return;
+        var isGamePlaying = GameManager.instance.currentGameState == CurrentGameState.Play;
+        uiButton.SetActive(!isGamePlaying);
+        if (isGamePlaying) return;
 
         if (_readyToCreate && Input.GetMouseButtonDown(0))
         {
@@ -22,6 +26,7 @@ public class CreateNode : MonoBehaviour
 
         if(_currentNode != null)
         {
+            gridSystem.isEditNodeMode = true;
             if (gridSystem.TryGetGlobalPosOnGrid(gridSystem.CorrectMousePos,out Vector3 onGridPos))
             {
                 _currentNode.transform.position = onGridPos;
@@ -38,6 +43,7 @@ public class CreateNode : MonoBehaviour
                     {
                         Destroy(_currentNode);
                     }
+                    gridSystem.isEditNodeMode = false;
                 }
             }
             else
@@ -46,6 +52,9 @@ public class CreateNode : MonoBehaviour
                 if (Input.GetMouseButtonUp(0))
                 {
                     Destroy(_currentNode);
+
+                    changeDestroy.ChangeImage(true);
+                    gridSystem.isEditNodeMode = false;
                 }
             }
         }

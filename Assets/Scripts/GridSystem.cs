@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UIElements.Experimental;
 
 public class GridSystem : MonoBehaviour
@@ -20,6 +21,10 @@ public class GridSystem : MonoBehaviour
     }
 
     public Node[,] GridMap { get; private set; }
+
+    public bool isEditNodeMode = false;
+
+    public UnityAction OnChangedNodeInfo;
 
     public void CreateGrid()
     {
@@ -166,6 +171,7 @@ public class GridSystem : MonoBehaviour
         node.attachedObject = obj;
 
         node.attachedObject.transform.position = node.position;
+        OnChangedNodeInfo?.Invoke();
         return true;
     }
 
@@ -185,6 +191,7 @@ public class GridSystem : MonoBehaviour
 
         node.isAttached = false;
         node.attachedObject = null;
+        OnChangedNodeInfo?.Invoke();
         return true;
     }
 
