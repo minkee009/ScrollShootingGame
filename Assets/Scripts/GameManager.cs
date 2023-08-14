@@ -19,6 +19,10 @@ public class GameManager : MonoBehaviour
     public GameObject playerPrefab;
     public GameObject enemyPrefab;
 
+    [HideInInspector]
+    public GameObject botUnit = null;
+    public float botTime = 15f;
+
     public Transform playerTransform;
     public Camera mainCam;
 
@@ -28,7 +32,9 @@ public class GameManager : MonoBehaviour
     public UnityAction Act_OnGamePause;
     public UnityAction Act_OnGameReset;
 
-    public float _targetViewSize = 0f;
+    public GameObject[] horizontalLetterBoxes;
+
+    float _targetViewSize = 0f;
 
     private void Awake()
     {
@@ -56,14 +62,30 @@ public class GameManager : MonoBehaviour
             playerTransform = player.transform;
             gridSystem.TryAttachObjToNode(playerNode, player);
             Act_OnGameReset += gridSystem.ResetAllObjPosInNode;
+            PauseGame();
+        }
+        else
+        {
+            PlayGame();
         }
 
-        PauseGame();
     }
 
     private void Update()
     {
         mainCam.orthographicSize = Mathf.Lerp(mainCam.orthographicSize, _targetViewSize, Time.deltaTime * 18f);
+
+        if (botUnit != null)
+        {
+            botTime -= Time.deltaTime * inGameTimeSpeed;
+
+            if(botTime < 0f)
+            {
+                botTime = 15f;
+                Destroy(botUnit);
+                botUnit = null; 
+            }
+        }
     }
 
     public void ResetGame()
@@ -71,6 +93,10 @@ public class GameManager : MonoBehaviour
         Act_OnGameReset?.Invoke();
         currentGameState = CurrentGameState.Pause;
         mainCam.clearFlags = CameraClearFlags.Skybox;
+        foreach(var box in horizontalLetterBoxes)
+        {
+            box.SetActive(false);
+        }
         _targetViewSize = 12;
     }
 
@@ -80,6 +106,10 @@ public class GameManager : MonoBehaviour
         inGameTimeSpeed = 1.0f;
         currentGameState = CurrentGameState.Play;
         mainCam.clearFlags = CameraClearFlags.SolidColor;
+        foreach (var box in horizontalLetterBoxes)
+        {
+            box.SetActive(true);
+        }
         _targetViewSize = 10;
     }
 
@@ -89,6 +119,10 @@ public class GameManager : MonoBehaviour
         inGameTimeSpeed = 0.0f;
         currentGameState = CurrentGameState.Pause;
         mainCam.clearFlags = CameraClearFlags.Skybox;
+        foreach (var box in horizontalLetterBoxes)
+        {
+            box.SetActive(false);
+        }
         _targetViewSize = 12;
     }
 }
