@@ -7,32 +7,35 @@ public enum CurrentGameState { Pause = 0, Play }
 
 public class GameManager : MonoBehaviour
 {
+    //싱글톤 객체
     public static GameManager instance;
 
-    [Range(0f,2f)]
-    public float inGameTimeSpeed = 1.0f;
-
+    [Header("오브젝트 초기화 설정")]
+    public Transform playerTransform;
     public Vector2 playerInitPos;
-    public GridSystem gridSystem;
-
+    public Vector2 enemyCreaterInitPos;
     public GameObject enemyCreaterPrefab;
     public GameObject playerPrefab;
     public GameObject enemyPrefab;
 
     [HideInInspector]
     public GameObject botUnit = null;
+
+    [Header("드론 봇 설정")]
     public float botTime = 15f;
 
-    public Transform playerTransform;
+    [Header("시스템 설정")]
+    public GridSystem gridSystem;
     public Camera mainCam;
+    public GameObject[] horizontalLetterBoxes;
 
+    [Range(0f, 2f)]
+    public float inGameTimeSpeed = 1.0f;
     public CurrentGameState currentGameState;
 
     public UnityAction Act_OnGamePlay;
     public UnityAction Act_OnGamePause;
     public UnityAction Act_OnGameReset;
-
-    public GameObject[] horizontalLetterBoxes;
 
     float _targetViewSize = 0f;
 
@@ -59,9 +62,7 @@ public class GameManager : MonoBehaviour
             gridSystem.CreateGrid();
             Node playerNode = gridSystem.GetNodeInGrid(playerInitPos);
             var player = Instantiate(playerPrefab);
-            playerTransform = player.transform;
             gridSystem.TryAttachObjToNode(playerNode, player);
-            Act_OnGameReset += gridSystem.ResetAllObjPosInNode;
             PauseGame();
         }
         else
@@ -91,13 +92,13 @@ public class GameManager : MonoBehaviour
     public void ResetGame()
     {
         Act_OnGameReset?.Invoke();
-        currentGameState = CurrentGameState.Pause;
-        mainCam.clearFlags = CameraClearFlags.Skybox;
-        foreach(var box in horizontalLetterBoxes)
-        {
-            box.SetActive(false);
-        }
-        _targetViewSize = 12;
+
+        //봇삭제
+        botTime = 15f;
+        Destroy(botUnit);
+        botUnit = null;
+
+        PauseGame();
     }
 
     public void PlayGame()

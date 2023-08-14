@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3059504195618360203}
   - component: {fileID: 8536788605575743157}
   - component: {fileID: -1440063021780758095}
-  - component: {fileID: 4929389107121093402}
+  - component: {fileID: 5410977009343548552}
   m_Layer: 10
   m_Name: BotItem
   m_TagString: Untagged
@@ -105,7 +105,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.8, y: 0.8, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &-1440063021780758095
 Rigidbody:
@@ -134,7 +134,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4929389107121093402
+--- !u!114 &5410977009343548552
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,7 +143,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8445454676214046685}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72ff10ea4e4c7da4b91dbef1347ecbef, type: 3}
+  m_Script: {fileID: 11500000, guid: bb5de6f17fcfedc47a1cd70250f23c41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   botUnit: {fileID: 7049488608576370283, guid: a0902a83bb24e874989dec4331d9e57b, type: 3}
+  effect: {fileID: 1845240806346120, guid: b395d5d6eb4b4b846acc021ee036b744, type: 3}

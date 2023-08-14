@@ -17,7 +17,7 @@ public class GridSystem : MonoBehaviour
 
     public Vector3 CorrectMousePos
     {
-        get { return mainCam.ScreenToWorldPoint(Input.mousePosition + Vector3.forward * 15f); }
+        get { return mainCam.ScreenToWorldPoint(Input.mousePosition + Vector3.forward * 1.5f); }
     }
 
     public Node[,] GridMap { get; private set; }

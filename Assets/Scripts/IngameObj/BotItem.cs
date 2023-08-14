@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class BotItem : MonoBehaviour
 {
     public GameObject botUnit;
+    public GameObject effect;
 
     private void OnTriggerEnter(Collider other)
     {
+        var currentEffect = Instantiate(effect);
+        currentEffect.transform.position = transform.position;
+
         if (GameManager.instance.botUnit != null)
         {
             GameManager.instance.botTime = 15f;

@@ -192,7 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72b1231fef1163e4aa6ff916cedff250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
+  rb: {fileID: 3238024972819368013}
   speed: 15
   reflectMask:
     serializedVersion: 2

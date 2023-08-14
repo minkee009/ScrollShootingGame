@@ -7,13 +7,7 @@ using UnityEngine.Events;
 
 public class HitableObj : MonoBehaviour
 {
-    public float Hp
-    {
-        get
-        {
-            return _hp;
-        }
-    }
+    public float Hp => _hp;
 
     public float maxHp;
 

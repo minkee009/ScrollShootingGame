@@ -84,6 +84,14 @@ public class NodeMover : MonoBehaviour
                     if (isOnDestroyZone) //삭제존
                     {
                         changeTrashcan.ChangeImage(true);
+
+                        if (_selectedObject.GetComponent<NodeObjCreater>().nonRemoveableObj)
+                        {
+                            //실패 시
+                            _selectedNode.attachedObject.transform.position = _lastNodePos;
+                            return;
+                        }
+
                         gridSystem.TryDettachObjFromNode(_selectedNode);
                         _selectedNode = null;
                         _selectedObject = null;

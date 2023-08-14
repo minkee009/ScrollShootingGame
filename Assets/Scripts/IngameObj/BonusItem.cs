@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BonusItem : MonoBehaviour
 {
+    public GameObject effect;
+
     private void OnTriggerEnter(Collider other)
     {
         var playerFire = other.GetComponent<PlayerFire>();
@@ -11,6 +13,10 @@ public class BonusItem : MonoBehaviour
 
         playerFire.skillLevel = Mathf.Min(playerFire.skillLevel + 1, 3);
         playerHit.IncOrDecHp(1f);
+
+        var currentEffect = Instantiate(effect);
+        currentEffect.transform.position = transform.position;
+
         Destroy(gameObject);
     }
 }

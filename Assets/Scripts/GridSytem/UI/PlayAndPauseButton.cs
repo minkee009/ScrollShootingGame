@@ -24,4 +24,10 @@ public class PlayAndPauseButton : MonoBehaviour
             GameManager.instance.PauseGame();
         }
     }
+
+    public void OnReset()
+    {
+        _switchMode = false;
+        textMesh.text = "Play";
+    }
 }
