@@ -13,19 +13,7 @@ public class ChangeBackGroundMat : MonoBehaviour
 
     private void Start()
     {
-        switch (selectedBGIndex)
-        {
-            default:
-            case 0:
-                SetBG1();
-                break;
-            case 1:
-                SetBG2();
-                break;
-            case 2:
-                SetBG3();
-                break;
-        }
+        SwitchBG();
     }
 
     public void SetBG1()
@@ -50,5 +38,22 @@ public class ChangeBackGroundMat : MonoBehaviour
         currentBackGround.material = backgroundMats[2];
         currentBackGround.material.color = new Color(1, 1, 1, 0);
         selectedBGIndex = 2;
+    }
+
+    public void SwitchBG()
+    {
+        switch (selectedBGIndex)
+        {
+            default:
+            case 0:
+                SetBG1();
+                break;
+            case 1:
+                SetBG2();
+                break;
+            case 2:
+                SetBG3();
+                break;
+        }
     }
 }
