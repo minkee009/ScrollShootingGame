@@ -24,26 +24,9 @@ public class ChangeTrashCanImage : MonoBehaviour
         rect.sizeDelta = Vector2.Lerp(rect.sizeDelta, new Vector2(50f, 50f), Time.deltaTime * 6f);
     }
 
-    public void OnEnterPointer()
-    {
-        if (gridSystem.isEditNodeMode)
-        {
-            ChangeImage(false);
-        }
-    }
-
-    public void OnExitPointer()
-    {
-        if (gridSystem.isEditNodeMode)
-        {
-            ChangeImage(true);
-        }
-    }
-
     public void ChangeImage(bool close)
     {
         trashCanImage.sprite = close ? closeBacket : openBacket;
-
         rect.sizeDelta = new Vector2(60, 60);
     }
 }

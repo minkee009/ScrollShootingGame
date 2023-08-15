@@ -2,24 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerNodeObjCreator : NodeObjCreater
+public class PlayerNodeObj : NodeObj
 {
-    public override void CreateNodeObj()
+    public override void CreateObj()
     {
         if (_isFirstCreation)
         {
-            _nodeObj = Instantiate(activeObjPrefab);
-            _nodeObj.transform.position = transform.position;
+            _myObject = Instantiate(activeObjPrefab);
+            _myObject.transform.position = transform.position;
             _isFirstCreation = false;
-            
-            GameManager.instance.playerTransform = _nodeObj.transform;
+
+            GameManager.instance.playerTransform = _myObject.transform;
         }
     }
 
-    public override void ResetNodeObj()
+    public override void ResetObj()
     {
-        if (_nodeObj != null)
-            Destroy(_nodeObj);
+        if (_myObject != null)
+            Destroy(_myObject);
 
         _isFirstCreation = true;
         var gridIndex = GameManager.instance.gridSystem.GetGridMapIndex(transform.position);

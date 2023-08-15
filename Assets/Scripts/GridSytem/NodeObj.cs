@@ -2,19 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NodeObjCreater : MonoBehaviour
+public class NodeObj : MonoBehaviour
 {
     public GameObject activeObjPrefab;
     public SpriteRenderer sprite;
-    public bool nonRemoveableObj = false;
+    public bool nonRemoveAbleObj = false;
+    public bool combineAbleObj = false;
 
-    protected GameObject _nodeObj;
+    protected GameObject _myObject;
     protected bool _isFirstCreation = true;
 
     private void Start()
     {
-        GameManager.instance.Act_OnGamePlay += CreateNodeObj;
-        GameManager.instance.Act_OnGameReset += ResetNodeObj;
+        GameManager.instance.Act_OnGamePlay += CreateObj;
+        GameManager.instance.Act_OnGameReset += ResetObj;
     }
 
     private void Update()
@@ -39,28 +40,33 @@ public class NodeObjCreater : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameManager.instance.Act_OnGamePlay -= CreateNodeObj;
-        GameManager.instance.Act_OnGameReset -= ResetNodeObj;
-        if (_nodeObj != null)
-            Destroy(_nodeObj);
+        GameManager.instance.Act_OnGamePlay -= CreateObj;
+        GameManager.instance.Act_OnGameReset -= ResetObj;
+        if (_myObject != null)
+            Destroy(_myObject);
     }
 
-    public virtual void CreateNodeObj()
+    public virtual void CreateObj()
     {
         if (_isFirstCreation)
         {
-            _nodeObj = Instantiate(activeObjPrefab);
-            _nodeObj.transform.position = transform.position;
+            _myObject = Instantiate(activeObjPrefab);
+            _myObject.transform.position = transform.position;
             _isFirstCreation = false;
         }
     }
 
 
-    public virtual void ResetNodeObj()
+    public virtual void ResetObj()
     {
-        if(_nodeObj != null)
-            Destroy(_nodeObj);
+        if(_myObject != null)
+            Destroy(_myObject);
 
         _isFirstCreation = true;
+    }
+
+    public virtual bool TryCombineOtherNodeObj(GameObject other)
+    {
+        return false;
     }
 }

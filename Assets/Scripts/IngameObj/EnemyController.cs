@@ -5,14 +5,18 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public HitableObj myHit;
+    public GameObject dropItem;
 
+    GameObject _createdDropItem;
     HitableObj _hitObj;
 
     private void Start()
     {
+        GameManager.instance.Act_OnGameReset += DestroyDropItemOnReset;
         myHit = GetComponent<HitableObj>();
         myHit.OnHit += SetAttackScoreOnHit;
         myHit.OnDie += SetDestroyScoreOnDie;
+        myHit.OnDie += CreateDropItem;
     }
 
     private void OnCollisionEnter(Collision other)
@@ -32,5 +36,17 @@ public class EnemyController : MonoBehaviour
     public void SetDestroyScoreOnDie()
     {
         GameManager.instance.destroyScore += 100;
+    }
+
+    public void DestroyDropItemOnReset()
+    {
+        Destroy(_createdDropItem);
+    }
+
+    public void CreateDropItem()
+    {
+        if (dropItem == null) return;
+        _createdDropItem = Instantiate(dropItem);
+        _createdDropItem.transform.position = transform.position;
     }
 }

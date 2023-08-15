@@ -22,8 +22,6 @@ public class GridSystem : MonoBehaviour
 
     public Node[,] GridMap { get; private set; }
 
-    public bool isEditNodeMode = false;
-
     public void CreateGrid()
     {
         GridMap = new Node[gridWidth, gridHeight];
@@ -163,7 +161,7 @@ public class GridSystem : MonoBehaviour
     /// <param name="obj"></param>
     public bool TryAttachObjToNode(Node node, GameObject obj)
     {
-        if (node.isAttached) return false;
+        if (node == null || node.isAttached) return false;
         
         node.isAttached = true;
         node.attachedObject = obj;
@@ -179,7 +177,7 @@ public class GridSystem : MonoBehaviour
     /// <param name="obj"></param>
     public bool TryDettachObjFromNode(Node node, bool destroy = true)
     {
-        if (!node.isAttached) return false;
+        if (node == null || !node.isAttached) return false;
 
         if (destroy)
         {
