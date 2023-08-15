@@ -131,7 +131,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeObjPrefab: {fileID: 3234354569247444956, guid: bd383a2834e46f847be2a69de856c5b3, type: 3}
   sprite: {fileID: 683651221804369229}
-  nonRemoveableObj: 1
+  nonRemoveAbleObj: 1
+  combineAbleObj: 0
 --- !u!1 &6761444697638632254
 GameObject:
   m_ObjectHideFlags: 0
