@@ -18,7 +18,7 @@ public class BotMove : MonoBehaviour
             || ReferenceEquals(Center, null)) return;
         _angle += speed * Time.deltaTime * GameManager.instance.inGameTimeSpeed;
         var targetPos = new Vector3(Mathf.Cos(_angle), Mathf.Sin(_angle), -0.2f) * radius + Center.position;
-        transform.position = Vector3.Lerp(transform.position,targetPos,3f * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position,targetPos, 6f * Time.deltaTime);
     }
 
     public void InitPos()

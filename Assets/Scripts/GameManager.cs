@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -33,6 +34,16 @@ public class GameManager : MonoBehaviour
     public float inGameTimeSpeed = 1.0f;
     public CurrentGameState currentGameState;
 
+
+    [Header("기타")]
+    public int attackScore = 0;
+    public int destroyScore = 0;
+    public int bestScore = 0;
+
+    public TMP_Text attackScoreMesh;
+    public TMP_Text destroyScoreMesh;
+    public TMP_Text bestScoreMesh;
+
     public UnityAction Act_OnGamePlay;
     public UnityAction Act_OnGamePause;
     public UnityAction Act_OnGameReset;
@@ -63,19 +74,22 @@ public class GameManager : MonoBehaviour
             Node playerNode = gridSystem.GetNodeInGrid(playerInitPos);
             var player = Instantiate(playerPrefab);
             gridSystem.TryAttachObjToNode(playerNode, player);
-            PauseGame();
+            ResetGame();
         }
         else
         {
             PlayGame();
         }
 
+        bestScore = PlayerPrefs.GetInt("Best Score");
     }
 
     private void Update()
     {
+        //카메라 줌인 줌아웃
         mainCam.orthographicSize = Mathf.Lerp(mainCam.orthographicSize, _targetViewSize, Time.deltaTime * 18f);
-
+        
+        //드론 봇 시간
         if (botUnit != null)
         {
             botTime -= Time.deltaTime * inGameTimeSpeed;
@@ -87,6 +101,11 @@ public class GameManager : MonoBehaviour
                 botUnit = null; 
             }
         }
+
+        //점수 프린팅
+        attackScoreMesh.text = attackScore.ToString();
+        destroyScoreMesh.text = destroyScore.ToString();
+        bestScoreMesh.text = bestScore.ToString();
     }
 
     public void ResetGame()
@@ -94,10 +113,15 @@ public class GameManager : MonoBehaviour
         Act_OnGameReset?.Invoke();
 
         //봇삭제
+
         botTime = 15f;
         Destroy(botUnit);
         botUnit = null;
 
+        //점수 설정
+        attackScore = 0;
+        destroyScore = 0;
+        
         PauseGame();
     }
 
@@ -112,6 +136,10 @@ public class GameManager : MonoBehaviour
             box.SetActive(true);
         }
         _targetViewSize = 10;
+
+        attackScoreMesh.color = new Color(attackScoreMesh.color.r, attackScoreMesh.color.g, attackScoreMesh.color.b, 1.0f);
+        destroyScoreMesh.color = new Color(destroyScoreMesh.color.r, destroyScoreMesh.color.g, destroyScoreMesh.color.b, 1.0f);
+        bestScoreMesh.color = new Color(bestScoreMesh.color.r, bestScoreMesh.color.g, bestScoreMesh.color.b, 1.0f);
     }
 
     public void PauseGame()
@@ -125,5 +153,9 @@ public class GameManager : MonoBehaviour
             box.SetActive(false);
         }
         _targetViewSize = 12;
+
+        attackScoreMesh.color = new Color(attackScoreMesh.color.r, attackScoreMesh.color.g, attackScoreMesh.color.b, 0.0f);
+        destroyScoreMesh.color = new Color(destroyScoreMesh.color.r, destroyScoreMesh.color.g, destroyScoreMesh.color.b, 0.0f);
+        bestScoreMesh.color = new Color(bestScoreMesh.color.r, bestScoreMesh.color.g, bestScoreMesh.color.b, 0.0f);
     }
 }

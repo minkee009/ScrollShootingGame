@@ -29,13 +29,13 @@ public class BulletMove : MonoBehaviour
             speedMag -= hit.distance - 0.02f;
 
             transform.position += (hit.distance - 0.02f) * transform.up;
-            rb.MovePosition(transform.position + (hit.distance - 0.02f) * transform.up);
+            rb.MovePosition(transform.position);
 
             transform.up = Vector3.Reflect(transform.up, hit.normal);
             rb.MoveRotation(transform.rotation);
 
             transform.position += speedMag * transform.up;
-            rb.MovePosition(transform.position + speedMag * transform.up);
+            rb.MovePosition(transform.position);
 
             reflect = false;
             return;

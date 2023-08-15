@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class ScrollBackGround : MonoBehaviour
 {
-    float _currentTime;
     public float Speed;
-    public Material backGround;
+
+    float _currentTime;
+    MeshRenderer _backGround;
 
     public void Start()
     {
+        _backGround = GetComponent<MeshRenderer>();
         GameManager.instance.Act_OnGameReset += ResetBackGroundOffset;
     }
 
@@ -18,7 +20,8 @@ public class ScrollBackGround : MonoBehaviour
     {
         _currentTime += Speed * Time.deltaTime * GameManager.instance.inGameTimeSpeed;
 
-        backGround.mainTextureOffset = Vector2.up * _currentTime;
+        _backGround.material.mainTextureOffset = Vector2.up * _currentTime;
+        _backGround.material.color = Color.Lerp(_backGround.material.color, new Color(1,1,1,1), 12f * Time.deltaTime);
     }
 
     public void ResetBackGroundOffset()

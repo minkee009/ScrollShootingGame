@@ -259,7 +259,7 @@ MonoBehaviour:
   rb: {fileID: 1587852068586105786}
   targetTransform: {fileID: 0}
   speed: 30
-  moveSharpness: 8
+  moveSharpness: 5
 --- !u!114 &7934447310046423464
 MonoBehaviour:
   m_ObjectHideFlags: 0
