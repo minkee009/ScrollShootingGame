@@ -9,6 +9,8 @@ public class BotItem : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.layer != 6) return;
+
         var currentEffect = Instantiate(effect);
         currentEffect.transform.position = transform.position;
 

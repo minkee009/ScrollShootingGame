@@ -8,6 +8,8 @@ public class BonusItem : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.layer != 6) return;
+
         var playerFire = other.GetComponent<PlayerFire>();
         var playerHit = other.GetComponent<HitableObj>();
 
