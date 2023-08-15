@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myHit: {fileID: 8460592809077571421}
+  dropItem: {fileID: 0}
 --- !u!114 &3938170964571011952
 MonoBehaviour:
   m_ObjectHideFlags: 0

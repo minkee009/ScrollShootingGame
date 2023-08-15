@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Transactions;
 using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 
@@ -9,17 +10,26 @@ public class EnemyNodeObj : NodeObj
     BotItem _botItem;
     BonusItem _bonusItem;
 
-    public override bool TryCombineOtherNodeObj(GameObject other)
+    bool _itemHasMovePreset;
+    CustomMovePreset _itemMovePreset;
+
+    public override bool TryCombineOtherNodeObj(NodeObj other)
     {
+        if(other.TryGetComponent(out CustomMoveProperty comp))
+        {
+            _itemHasMovePreset = true;
+            _itemMovePreset = comp.preset;
+        }
+
         //보너스 아이템
-        if (other.TryGetComponent(out _bonusItem))
+        if (other.activeObjPrefab.TryGetComponent(out _bonusItem))
         {
             _botItem = null;
             return true;
         }
 
         //드론봇 아이템
-        if (other.TryGetComponent(out _botItem))
+        if (other.activeObjPrefab.TryGetComponent(out _botItem))
         {
             _bonusItem = null;
             return true;
@@ -42,5 +52,8 @@ public class EnemyNodeObj : NodeObj
         {
             _enemy.dropItem = _botItem.gameObject;
         }
+
+        _enemy.itemHasMovePreset = _itemHasMovePreset;
+        _enemy.itemMovePreset = _itemMovePreset;
     }
 }

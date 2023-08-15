@@ -9,6 +9,8 @@ public class NodeObj : MonoBehaviour
     public bool nonRemoveAbleObj = false;
     public bool combineAbleObj = false;
 
+    public NodeProp[] nodeProps;
+
     protected GameObject _myObject;
     protected bool _isFirstCreation = true;
 
@@ -54,6 +56,14 @@ public class NodeObj : MonoBehaviour
             _myObject.transform.position = transform.position;
             _isFirstCreation = false;
         }
+
+        nodeProps = GetComponents<NodeProp>();
+
+        foreach (NodeProp nodeProp in nodeProps)
+        {
+            nodeProp.RemovecomponentForInstance(_myObject);
+            nodeProp.AddcomponentForInstance(_myObject);
+        }
     }
 
 
@@ -65,7 +75,7 @@ public class NodeObj : MonoBehaviour
         _isFirstCreation = true;
     }
 
-    public virtual bool TryCombineOtherNodeObj(GameObject other)
+    public virtual bool TryCombineOtherNodeObj(NodeObj other)
     {
         return false;
     }

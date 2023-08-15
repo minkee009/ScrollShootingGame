@@ -2,17 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NodeProp : MonoBehaviour
+public abstract class NodeProp : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public abstract bool TryCombineOtherNodeObj(NodeObj other);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public abstract void AddcomponentForInstance(GameObject instance);
+
+    public abstract void RemovecomponentForInstance(GameObject instance);
 }

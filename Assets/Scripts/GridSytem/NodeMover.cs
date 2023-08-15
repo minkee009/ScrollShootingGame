@@ -83,6 +83,11 @@ public class NodeMover : MonoBehaviour
             {
                 _isSelected = false;
 
+                var currentNodeObj = _selectedNodePrefab.GetComponent<NodeObj>();
+                var currentNodeProp = _selectedNodePrefab.GetComponent<NodeProp>();
+                var currentIsNodeObj = currentNodeObj != null;
+                var currentIsNodeProp = currentNodeProp != null;
+
                 if (gridSystem.IsGlobalPosOnGrid(gridSystem.CorrectMousePos)) //그리드 안
                 {
                     var getNodeInfo = gridSystem.GetNodeInGrid(gridSystem.GetGridMapIndex(gridSystem.CorrectMousePos));
@@ -90,30 +95,32 @@ public class NodeMover : MonoBehaviour
 
                     if (!getNodeInfo.isAttached) //겹침 없음
                     {
-                        gridSystem.TryDettachObjFromNode(_selectedNode, false);
-                        gridSystem.TryAttachObjToNode(getNodeInfo, _selectedNodePrefab);
-                        //_selectedNode = null;
-                        //_selectedObject = null;
-                        return;
+                        if (currentIsNodeObj)
+                        {
+                            gridSystem.TryDettachObjFromNode(_selectedNode, false);
+                            gridSystem.TryAttachObjToNode(getNodeInfo, _selectedNodePrefab);
+                            return;
+                        }
                     }
                     else
                     {
-                        var currentNodeObj = _selectedNodePrefab.GetComponent<NodeObj>();
-                        var currentNodeProp = _selectedNodePrefab.GetComponent<NodeProp>();
                         var getNodeObjInfo = getNodeInfo.attachedObject.GetComponent<NodeObj>();
 
                         //겹치기
-                        if (currentNodeObj != null 
+                        if (currentIsNodeObj
                             && getNodeObjInfo.combineAbleObj
-                            && getNodeObjInfo.TryCombineOtherNodeObj(currentNodeObj.activeObjPrefab))
+                            && getNodeObjInfo.TryCombineOtherNodeObj(currentNodeObj))
                         {
                             gridSystem.TryDettachObjFromNode(_selectedNode);
                             _selectedNode = null;
                             Destroy(_selectedNodePrefab);
                             return;
                         }
-                        if (currentNodeProp != null)
+                        if (currentIsNodeProp
+                            && currentNodeProp.TryCombineOtherNodeObj(getNodeObjInfo))
                         {
+                            _selectedNode = null;
+                            Destroy(_selectedNodePrefab);
                             return;
                         }
                     }
@@ -124,7 +131,7 @@ public class NodeMover : MonoBehaviour
                     {
                         changeTrashcan.ChangeImage(true);
 
-                        if (_selectedNodePrefab.GetComponent<NodeObj>().nonRemoveAbleObj)
+                        if (currentIsNodeObj && currentNodeObj.nonRemoveAbleObj)
                         {
                             //실패 시
                             _selectedNode.attachedObject.transform.position = _lastNodePos;

@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: -5021852873004441615}
   m_Layer: 0
   m_Name: PlayerNodeObj
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -133,6 +133,7 @@ MonoBehaviour:
   sprite: {fileID: 683651221804369229}
   nonRemoveAbleObj: 1
   combineAbleObj: 0
+  nodeProps: []
 --- !u!1 &6761444697638632254
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,6 +6,8 @@ public class EnemyController : MonoBehaviour
 {
     public HitableObj myHit;
     public GameObject dropItem;
+    public bool itemHasMovePreset;
+    public CustomMovePreset itemMovePreset;
 
     GameObject _createdDropItem;
     HitableObj _hitObj;
@@ -48,5 +50,26 @@ public class EnemyController : MonoBehaviour
         if (dropItem == null) return;
         _createdDropItem = Instantiate(dropItem);
         _createdDropItem.transform.position = transform.position;
+        if (itemHasMovePreset)
+        {
+            switch (itemMovePreset)
+            {
+                case CustomMovePreset.ToDownward:
+                    _createdDropItem.AddComponent<MoveDownward>();
+                    var move = _createdDropItem.GetComponent<MoveDownward>();
+                    move.speed = 4.0f;
+                    move.moveSharpness = 12f;
+                    move.rb = _createdDropItem.GetComponent<Rigidbody>();
+                    break;
+                case CustomMovePreset.ToHorizontal:
+                    _createdDropItem.AddComponent<MoveHorizontal>();
+                    var move2 = _createdDropItem.GetComponent<MoveHorizontal>();
+                    move2.speed = 2.0f;
+                    move2.moveSharpness = 12f;
+                    move2.rb = _createdDropItem.GetComponent<Rigidbody>();
+                    break;
+
+            }
+        }
     }
 }
