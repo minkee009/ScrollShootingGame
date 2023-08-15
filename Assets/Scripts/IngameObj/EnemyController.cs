@@ -68,6 +68,13 @@ public class EnemyController : MonoBehaviour
                     move2.moveSharpness = 12f;
                     move2.rb = _createdDropItem.GetComponent<Rigidbody>();
                     break;
+                case CustomMovePreset.ToPlayer:
+                    _createdDropItem.AddComponent<MoveToPlayer>();
+                    var move3 = _createdDropItem.GetComponent<MoveToPlayer>();
+                    move3.speed = 2.0f;
+                    move3.moveSharpness = 12f;
+                    move3.rb = _createdDropItem.GetComponent<Rigidbody>();
+                    break;
 
             }
         }

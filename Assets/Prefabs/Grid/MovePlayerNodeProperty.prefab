@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: db30d61d0c22f0748a244f2b2274c943, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5c1714594b540ce42a2643fe290e3657, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 512396133001769839}
   - component: {fileID: 7089360217950250445}
   m_Layer: 0
-  m_Name: MoveHorizontalNodeProperty
+  m_Name: MovePlayerNodeProperty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129,9 +129,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 069cc720c404f474e950076d3cba9310, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  preset: 1
+  preset: 2
   speed: 2
-  moveSharpness: 6
+  moveSharpness: 12
 --- !u!1 &6761444697638632254
 GameObject:
   m_ObjectHideFlags: 0

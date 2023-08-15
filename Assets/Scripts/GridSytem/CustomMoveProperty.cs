@@ -51,6 +51,13 @@ public class CustomMoveProperty : NodeProp
                 move2.moveSharpness = moveSharpness;
                 move2.rb = instance.GetComponent<Rigidbody>();
                 break;
+            case CustomMovePreset.ToPlayer:
+                instance.AddComponent<MoveToPlayer>();
+                var move3 = instance.GetComponent<MoveToPlayer>();
+                move3.speed = speed;
+                move3.moveSharpness = moveSharpness;
+                move3.rb = instance.GetComponent<Rigidbody>();
+                break;
         }
     }
 
