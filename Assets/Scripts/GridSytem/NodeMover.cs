@@ -116,7 +116,8 @@ public class NodeMover : MonoBehaviour
                             Destroy(_selectedNodePrefab);
                             return;
                         }
-                        if (currentIsNodeProp
+                        if (!currentNodeObj
+                            && currentIsNodeProp
                             && currentNodeProp.TryCombineOtherNodeObj(getNodeObjInfo))
                         {
                             _selectedNode = null;
