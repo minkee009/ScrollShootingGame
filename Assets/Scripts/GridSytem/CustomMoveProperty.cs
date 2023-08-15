@@ -20,7 +20,6 @@ public class CustomMoveProperty : NodeProp
 
         if(other.TryGetComponent(out _otherMoveComponent))
         {
-            //Destroy(_otherMoveComponent.sprite.transform);
             DestroyImmediate(_otherMoveComponent);
         }
 
@@ -29,9 +28,6 @@ public class CustomMoveProperty : NodeProp
         c.preset = preset;
         c.speed = speed;
         c.moveSharpness = moveSharpness;
-
-        //sprite.transform.parent = other.transform;
-        //colorChange.RegistColorChangeToAction();
 
         return true;
     }
@@ -56,7 +52,6 @@ public class CustomMoveProperty : NodeProp
                 move2.rb = instance.GetComponent<Rigidbody>();
                 break;
         }
-        //firstCreation = false;
     }
 
     public override void RemovecomponentForInstance(GameObject instance)
