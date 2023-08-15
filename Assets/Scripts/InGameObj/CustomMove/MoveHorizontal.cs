@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MoveHorizontal : CustomMove
 {
-    float _moveTimer = 0f;
+    float _moveTimer = 1f;
     float _waitTimer = 2f;
     float _minus = 1f;
     float _waitSpeed = 1f;
