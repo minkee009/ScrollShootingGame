@@ -15,7 +15,7 @@ public class GridSystem : MonoBehaviour
     [Header("기타")]
     public Camera mainCam;
 
-    public Vector3 CorrectMousePos
+    public Vector3 WorldMousePos
     {
         get { return mainCam.ScreenToWorldPoint(Input.mousePosition + Vector3.forward * 1.5f); }
     }
@@ -53,18 +53,18 @@ public class GridSystem : MonoBehaviour
     }
 
     /// <summary>
-    /// 그리드 위에서의 글로벌 포지션 위치를 얻습니다.
+    /// 그리드 위에서의 월드 포지션 위치를 얻습니다.
     /// </summary>
-    /// <param name="mousePos"></param>
+    /// <param name="worldPos"></param>
     /// <param name="onGridPos"></param>
     /// <returns></returns>
-    public bool TryGetGlobalPosOnGrid(Vector3 globalPos, out Vector3 onGridPos)
+    public bool TryGetWorldPosOnGrid(Vector3 worldPos, out Vector3 onGridPos)
     {
         onGridPos = Vector3.zero;
 
-        if (IsGlobalPosOnGrid(globalPos))
+        if (IsWorldPosOnGrid(worldPos))
         {
-            var gridIndex = GetGridMapIndex(globalPos);
+            var gridIndex = GetGridMapIndex(worldPos);
             onGridPos = GridMap[gridIndex[0], gridIndex[1]].position;
             return true;
         }
@@ -72,14 +72,14 @@ public class GridSystem : MonoBehaviour
         return false;
     }
 
-    public bool TryGetGlobalPosOnGrid(Vector3 globalPos, out Vector3 onGridPos, out int[] gridIndex)
+    public bool TryGetWorldPosOnGrid(Vector3 worldPos, out Vector3 onGridPos, out int[] gridIndex)
     {
         onGridPos = Vector3.zero;
         gridIndex = new int[2];
 
-        if (IsGlobalPosOnGrid(globalPos))
+        if (IsWorldPosOnGrid(worldPos))
         {
-            gridIndex = GetGridMapIndex(globalPos);
+            gridIndex = GetGridMapIndex(worldPos);
             onGridPos = GridMap[gridIndex[0], gridIndex[1]].position;
             return true;
         }
@@ -89,17 +89,17 @@ public class GridSystem : MonoBehaviour
 
 
     /// <summary>
-    /// 글로벌 포지션의 위치가 그리드 위에 있는지 알아냅니다.
+    /// 입력한 월드 포지션의 위치가 그리드 위에 있는지 알아냅니다.
     /// </summary>
-    /// <param name="mousePos"></param>
+    /// <param name="worldPos"></param>
     /// <returns></returns>
-    public bool IsGlobalPosOnGrid(Vector3 globalPos)
+    public bool IsWorldPosOnGrid(Vector3 worldPos)
     {
         Vector3 minPos = gridPivot.position + new Vector3(-0.5f, -0.5f, 0);//gridMap[0, 0] + new Vector3(-0.5f,-0.5f,0);
         Vector3 maxPos = gridPivot.position + new Vector3(-0.5f + gridWidth, -0.5f + gridHeight, 0);//gridMap[gridWidth - 1, gridHeight - 1] + new Vector3(0.5f, 0.5f, 0);
 
-        if ((globalPos.x >= minPos.x && globalPos.x <= maxPos.x)
-            && (globalPos.y >= minPos.y && globalPos.y <= maxPos.y))
+        if ((worldPos.x >= minPos.x && worldPos.x <= maxPos.x)
+            && (worldPos.y >= minPos.y && worldPos.y <= maxPos.y))
         {
             return true;
         }
@@ -110,15 +110,15 @@ public class GridSystem : MonoBehaviour
     /// <summary>
     /// 그리드맵의 인덱스를 찾습니다.
     /// </summary>
-    /// <param name="mousePos"></param>
+    /// <param name="worldPos"></param>
     /// <returns></returns>
-    public int[] GetGridMapIndex(Vector3 mousePos)
+    public int[] GetGridMapIndex(Vector3 worldPos)
     {
-        mousePos.x -= (gridPivot.position.x - 0.5f);
-        mousePos.y -= (gridPivot.position.y - 0.5f);
+        worldPos.x -= (gridPivot.position.x - 0.5f);
+        worldPos.y -= (gridPivot.position.y - 0.5f);
 
-        var x = (int)Mathf.Clamp(mousePos.x, 0f, gridWidth - 1);
-        var y = (int)Mathf.Clamp(mousePos.y, 0f, gridHeight - 1);
+        var x = (int)Mathf.Clamp(worldPos.x, 0f, gridWidth - 1);
+        var y = (int)Mathf.Clamp(worldPos.y, 0f, gridHeight - 1);
 
         int[] gridIndex = { x , y };
 
@@ -144,7 +144,7 @@ public class GridSystem : MonoBehaviour
 
     public bool TryGetAttachedNodeInGrid(ref Node node)
     {
-        var currentNode = GetNodeInGrid(GetGridMapIndex(CorrectMousePos));
+        var currentNode = GetNodeInGrid(GetGridMapIndex(WorldMousePos));
 
         if (currentNode.isAttached)
         {
@@ -213,7 +213,7 @@ public class GridSystem : MonoBehaviour
             }
         }
 
-        if(!TryGetGlobalPosOnGrid(CorrectMousePos, out Vector3 onPos))
+        if(!TryGetWorldPosOnGrid(WorldMousePos, out Vector3 onPos))
         {
             onPos = Vector3.one * 1080f;
         }

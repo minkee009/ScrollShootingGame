@@ -32,8 +32,8 @@ public class NodeMover : MonoBehaviour
     void Update()
     {
         //휴지통 관리
-        _isOnDestroyZone = _trashCanCorners[0].x < gridSystem.CorrectMousePos.x && _trashCanCorners[2].x > gridSystem.CorrectMousePos.x
-                                   && _trashCanCorners[0].y < gridSystem.CorrectMousePos.y && _trashCanCorners[2].y > gridSystem.CorrectMousePos.y;
+        _isOnDestroyZone = _trashCanCorners[0].x < gridSystem.WorldMousePos.x && _trashCanCorners[2].x > gridSystem.WorldMousePos.x
+                                   && _trashCanCorners[0].y < gridSystem.WorldMousePos.y && _trashCanCorners[2].y > gridSystem.WorldMousePos.y;
         if (_isSelected && _isOnDestroyZone != _wasOnDestroyZone)
         {
             changeTrashcan.ChangeImage(!_isOnDestroyZone);
@@ -57,7 +57,7 @@ public class NodeMover : MonoBehaviour
         if (isGamePlaying) return;
 
         if (!_isSelected
-            && gridSystem.IsGlobalPosOnGrid(gridSystem.CorrectMousePos)
+            && gridSystem.IsWorldPosOnGrid(gridSystem.WorldMousePos)
             && Input.GetMouseButtonDown(0))
         {
             if (gridSystem.TryGetAttachedNodeInGrid(ref _selectedNode))
@@ -72,9 +72,9 @@ public class NodeMover : MonoBehaviour
         {
             var pos = Vector3.zero;
 
-            if (!gridSystem.TryGetGlobalPosOnGrid(gridSystem.CorrectMousePos, out pos))
+            if (!gridSystem.TryGetWorldPosOnGrid(gridSystem.WorldMousePos, out pos))
             {
-                pos = gridSystem.CorrectMousePos;
+                pos = gridSystem.WorldMousePos;
             }
 
             _selectedNodePrefab.transform.position = pos;
@@ -88,9 +88,9 @@ public class NodeMover : MonoBehaviour
                 var currentIsNodeObj = currentNodeObj != null;
                 var currentIsNodeProp = currentNodeProp != null;
 
-                if (gridSystem.IsGlobalPosOnGrid(gridSystem.CorrectMousePos)) //그리드 안
+                if (gridSystem.IsWorldPosOnGrid(gridSystem.WorldMousePos)) //그리드 안
                 {
-                    var getNodeInfo = gridSystem.GetNodeInGrid(gridSystem.GetGridMapIndex(gridSystem.CorrectMousePos));
+                    var getNodeInfo = gridSystem.GetNodeInGrid(gridSystem.GetGridMapIndex(gridSystem.WorldMousePos));
                     
 
                     if (!getNodeInfo.isAttached) //겹침 없음

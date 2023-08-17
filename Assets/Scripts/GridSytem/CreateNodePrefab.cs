@@ -29,7 +29,7 @@ public class CreateNodePrefab : MonoBehaviour
     void CreateNodeInRuntime()
     {
         var currentNodePrefab = Instantiate(nodePrefab);
-        currentNodePrefab.transform.position = GameManager.instance.gridSystem.CorrectMousePos;
+        currentNodePrefab.transform.position = GameManager.instance.gridSystem.WorldMousePos;
         mover.SelectNodePrefab(currentNodePrefab);
     }
 
