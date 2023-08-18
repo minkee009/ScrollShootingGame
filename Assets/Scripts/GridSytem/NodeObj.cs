@@ -8,8 +8,9 @@ public class NodeObj : MonoBehaviour
     public SpriteRenderer sprite;
     public bool nonRemoveAbleObj = false;
     public bool combineAbleObj = false;
+    public string typeName;
 
-    public NodeProp[] nodeProps;
+    //public NodeProp[] nodeProps;
 
     protected GameObject _myObject;
     protected bool _isFirstCreation = true;
@@ -57,7 +58,7 @@ public class NodeObj : MonoBehaviour
             _isFirstCreation = false;
         }
 
-        nodeProps = GetComponents<NodeProp>();
+        var nodeProps = GetComponents<NodeProp>();
 
         foreach (NodeProp nodeProp in nodeProps)
         {
@@ -78,5 +79,14 @@ public class NodeObj : MonoBehaviour
     public virtual bool TryCombineOtherNodeObj(NodeObj other)
     {
         return false;
+    }
+
+    public ChildObjPreset GetChildObjPreset()
+    {
+        ChildObjPreset a = new ChildObjPreset();
+        a.nodeProps = GetComponents<NodeProp>();
+        a.activePrefab = activeObjPrefab;
+        a.createPos = Vector3.zero;
+        return a;
     }
 }

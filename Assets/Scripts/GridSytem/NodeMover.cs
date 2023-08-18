@@ -5,6 +5,7 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class NodeMover : MonoBehaviour
 {
     public GridSystem gridSystem;
@@ -60,7 +61,7 @@ public class NodeMover : MonoBehaviour
             && gridSystem.IsWorldPosOnGrid(gridSystem.WorldMousePos)
             && Input.GetMouseButtonDown(0))
         {
-            if (gridSystem.TryGetAttachedNodeInGrid(ref _selectedNode))
+            if (gridSystem.TryGetAttachedNodeInGrid(ref _selectedNode, gridSystem.GetGridMapIndex(gridSystem.WorldMousePos)))
             {
                 _lastNodePos = _selectedNode.position;
                 _selectedNodePrefab = _selectedNode.attachedObject;

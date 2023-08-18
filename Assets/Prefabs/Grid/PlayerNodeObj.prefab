@@ -133,7 +133,7 @@ MonoBehaviour:
   sprite: {fileID: 683651221804369229}
   nonRemoveAbleObj: 1
   combineAbleObj: 0
-  nodeProps: []
+  typeName: Player
 --- !u!1 &6761444697638632254
 GameObject:
   m_ObjectHideFlags: 0

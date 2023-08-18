@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -49,7 +48,7 @@ public class HitableObj : MonoBehaviour
 
         IncOrDecHp(value);
 
-        Debug.Log(gameObject.name + "이(가) 히트판정을 받음 | 다음 오브젝트가 히트시도 : " + from.name);
+        //Debug.Log(gameObject.name + "이(가) 히트판정을 받음 | 다음 오브젝트가 히트시도 : " + from.name);
     }
 
     public void Die()
@@ -64,6 +63,6 @@ public class HitableObj : MonoBehaviour
 
         Destroy(gameObject);
 
-        Debug.Log(gameObject.name + "이(가) 죽었음");
+        //Debug.Log(gameObject.name + "이(가) 죽었음");
     }
 }

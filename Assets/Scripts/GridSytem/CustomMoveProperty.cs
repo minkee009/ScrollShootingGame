@@ -11,12 +11,13 @@ public class CustomMoveProperty : NodeProp
     public float speed = 4.0f;
     public float moveSharpness = 12f;
 
-    CustomMove[] _otherCustomMove;
+    CustomMove _otherCustomMove;
     CustomMoveProperty _otherMoveComponent;
 
     public override bool TryCombineOtherNodeObj(NodeObj other)
     {
-        if (other.CompareTag("Player")) return false;
+        if (other.typeName == "Player" || other.typeName == "ObjectCreator") 
+            return false;
 
         if(other.TryGetComponent(out _otherMoveComponent))
         {
@@ -64,13 +65,10 @@ public class CustomMoveProperty : NodeProp
     public override void RemovecomponentForInstance(GameObject instance)
     {
         if(instance == null) return;
-        //자기 속성 해당하는 모든 컴포넌트 삭제
-
-        _otherCustomMove = instance.GetComponents<CustomMove>();
-
-        foreach (CustomMove move in _otherCustomMove)
-        {
-            DestroyImmediate(move);
-        }
+       
+        _otherCustomMove = instance.GetComponent<CustomMove>();
+       
+        //자기 속성 해당하는 컴포넌트 삭제
+        DestroyImmediate(_otherCustomMove);
     }
 }

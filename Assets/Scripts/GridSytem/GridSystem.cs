@@ -142,9 +142,9 @@ public class GridSystem : MonoBehaviour
         return GridMap[clampedX, clampedY];
     }
 
-    public bool TryGetAttachedNodeInGrid(ref Node node)
+    public bool TryGetAttachedNodeInGrid(ref Node node, int[] index)
     {
-        var currentNode = GetNodeInGrid(GetGridMapIndex(WorldMousePos));
+        var currentNode = GetNodeInGrid(index);
 
         if (currentNode.isAttached)
         {

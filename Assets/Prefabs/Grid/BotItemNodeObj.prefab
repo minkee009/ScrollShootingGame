@@ -131,6 +131,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeObjPrefab: {fileID: 8445454676214046685, guid: 80914bcfe293a204299615a260f9bd34, type: 3}
   sprite: {fileID: 683651221804369229}
+  nonRemoveAbleObj: 0
+  combineAbleObj: 0
+  childObjPreset: {fileID: 0}
+  typeName: BotItem
+  nodeProps: []
 --- !u!1 &6761444697638632254
 GameObject:
   m_ObjectHideFlags: 0

@@ -133,6 +133,7 @@ MonoBehaviour:
   sprite: {fileID: 683651221804369229}
   nonRemoveAbleObj: 0
   combineAbleObj: 1
+  typeName: Enemy
 --- !u!1 &6761444697638632254
 GameObject:
   m_ObjectHideFlags: 0

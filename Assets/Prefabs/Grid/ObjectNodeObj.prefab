@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9725491, g: 0.5568628, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -93,9 +93,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 512396133001769839}
-  - component: {fileID: 7736566546629243004}
+  - component: {fileID: 9014399044196535791}
   m_Layer: 0
-  m_Name: BonusItemNodeObj
+  m_Name: ObjectNodeObj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -117,7 +117,7 @@ Transform:
   - {fileID: 9122117593546528865}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7736566546629243004
+--- !u!114 &9014399044196535791
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,16 +126,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 5474807803646569890}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57bca00e198ed834291b7bfda047ed38, type: 3}
+  m_Script: {fileID: 11500000, guid: 984d75533e18c044f855d09a619d1373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeObjPrefab: {fileID: 8445454676214046685, guid: c5c207e508a724c47ab64de7f710d571, type: 3}
+  activeObjPrefab: {fileID: 5013594661752093662, guid: 5957fa59c73b0004ba12e6404a9fe599, type: 3}
   sprite: {fileID: 683651221804369229}
   nonRemoveAbleObj: 0
   combineAbleObj: 0
-  childObjPreset: {fileID: 0}
-  typeName: BonusItem
-  nodeProps: []
+  typeName: ObjectCreator
 --- !u!1 &6761444697638632254
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,11 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class NodeProp : MonoBehaviour
+public class NodeProp : MonoBehaviour
 {
-    public abstract bool TryCombineOtherNodeObj(NodeObj other);
+    public virtual bool TryCombineOtherNodeObj(NodeObj other)
+    {
+        return false;
+    }
 
-    public abstract void AddcomponentForInstance(GameObject instance);
+    public virtual void AddcomponentForInstance(GameObject instance)
+    {
+        
+    }
 
-    public abstract void RemovecomponentForInstance(GameObject instance);
+    public virtual void RemovecomponentForInstance(GameObject instance)
+    {
+        
+    }
 }
