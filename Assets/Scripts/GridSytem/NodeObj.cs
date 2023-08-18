@@ -78,15 +78,19 @@ public class NodeObj : MonoBehaviour
 
     public virtual bool TryCombineOtherNodeObj(NodeObj other)
     {
-        return false;
+        switch (other.typeName)
+        {
+            default:
+                return false;
+        }
     }
 
     public ChildObjPreset GetChildObjPreset()
     {
-        ChildObjPreset a = new ChildObjPreset();
-        a.nodeProps = GetComponents<NodeProp>();
-        a.activePrefab = activeObjPrefab;
-        a.createPos = Vector3.zero;
-        return a;
+        ChildObjPreset preset = new ChildObjPreset();
+        preset.nodeProps = GetComponents<NodeProp>();
+        preset.activePrefab = activeObjPrefab;
+        preset.createPos = Vector3.zero;
+        return preset;
     }
 }
