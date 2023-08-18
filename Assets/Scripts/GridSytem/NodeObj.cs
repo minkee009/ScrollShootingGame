@@ -10,8 +10,6 @@ public class NodeObj : MonoBehaviour
     public bool combineAbleObj = false;
     public string typeName;
 
-    //public NodeProp[] nodeProps;
-
     protected GameObject _myObject;
     protected bool _isFirstCreation = true;
 

@@ -20,10 +20,10 @@ public class ChildObjPreset
 
         if (nodeProps != null && nodeProps.Length > 0)
         {
-            foreach(var n in nodeProps)
+            foreach(var prop in nodeProps)
             {
-                n.RemovecomponentForInstance(_instance);
-                n.AddcomponentForInstance(_instance);
+                prop.RemovecomponentForInstance(_instance);
+                prop.AddcomponentForInstance(_instance);
             }
         }
         
@@ -32,6 +32,7 @@ public class ChildObjPreset
 
     public void DestroyInstance()
     {
+        GameManager.instance.Act_OnGameReset -= DestroyInstance;
         GameObject.Destroy(_instance);
     }
 }
