@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MoveDownward : CustomMove
 {
+
     public override void ExcuteMove()
     {
         var deltaTime = Time.deltaTime * GameManager.instance.inGameTimeSpeed;

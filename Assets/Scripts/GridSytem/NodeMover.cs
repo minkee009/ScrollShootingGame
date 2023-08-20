@@ -22,17 +22,14 @@ public class NodeMover : MonoBehaviour
     Vector3 _lastNodePos;
     Vector3[] _trashCanCorners = new Vector3[4];
 
-    private void Start()
-    {
-        trashCan.GetWorldCorners(_trashCanCorners);
-        _trashCanCorners[0] = gridSystem.mainCam.ScreenToWorldPoint(_trashCanCorners[0]);
-        _trashCanCorners[2] = gridSystem.mainCam.ScreenToWorldPoint(_trashCanCorners[2]);
-    }
-
     // Update is called once per frame
     void Update()
     {
         //ÈÞÁöÅë °ü¸®
+        trashCan.GetWorldCorners(_trashCanCorners);
+        _trashCanCorners[0] = gridSystem.mainCam.ScreenToWorldPoint(_trashCanCorners[0]);
+        _trashCanCorners[2] = gridSystem.mainCam.ScreenToWorldPoint(_trashCanCorners[2]);
+
         _isOnDestroyZone = _trashCanCorners[0].x < gridSystem.WorldMousePos.x && _trashCanCorners[2].x > gridSystem.WorldMousePos.x
                                    && _trashCanCorners[0].y < gridSystem.WorldMousePos.y && _trashCanCorners[2].y > gridSystem.WorldMousePos.y;
         if (_isSelected && _isOnDestroyZone != _wasOnDestroyZone)

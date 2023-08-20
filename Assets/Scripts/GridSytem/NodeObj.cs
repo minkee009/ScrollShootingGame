@@ -60,7 +60,6 @@ public class NodeObj : MonoBehaviour
 
         foreach (NodeProp nodeProp in nodeProps)
         {
-            nodeProp.RemovecomponentForInstance(_myObject);
             nodeProp.AddcomponentForInstance(_myObject);
         }
     }

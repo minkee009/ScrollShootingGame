@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public enum CustomMovePreset { ToDownward = 0, ToHorizontal, ToPlayer }
+public enum CustomMovePreset { MoveDownward = 0, MoveHorizontal, MoveToPlayer }
 
 public class CustomMoveProperty : NodeProp
 {
@@ -36,23 +36,33 @@ public class CustomMoveProperty : NodeProp
     public override void AddcomponentForInstance(GameObject instance)
     {
         if (instance == null) return;
+
+        _otherCustomMove = instance.GetComponent<CustomMove>();
+        if (_otherCustomMove != null && _otherCustomMove.GetType().ToString() == preset.ToString())
+        {
+            return;
+            //커스텀무브 겟타입의 이름을 밝혀서 같은지 아닌지 확인이 되어야함
+        }
+        
+        RemovecomponentForInstance(instance);
+
         switch (preset)
         {
-            case CustomMovePreset.ToDownward:
+            case CustomMovePreset.MoveDownward:
                 instance.AddComponent<MoveDownward>();
                 var move = instance.GetComponent<MoveDownward>();
                 move.speed = speed;
                 move.moveSharpness = moveSharpness;
                 move.rb = instance.GetComponent<Rigidbody>();
                 break;
-            case CustomMovePreset.ToHorizontal:
+            case CustomMovePreset.MoveHorizontal:
                 instance.AddComponent<MoveHorizontal>();
                 var move2 = instance.GetComponent<MoveHorizontal>();
                 move2.speed = speed;
                 move2.moveSharpness = moveSharpness;
                 move2.rb = instance.GetComponent<Rigidbody>();
                 break;
-            case CustomMovePreset.ToPlayer:
+            case CustomMovePreset.MoveToPlayer:
                 instance.AddComponent<MoveToPlayer>();
                 var move3 = instance.GetComponent<MoveToPlayer>();
                 move3.speed = speed;
@@ -67,7 +77,7 @@ public class CustomMoveProperty : NodeProp
         if(instance == null) return;
        
         _otherCustomMove = instance.GetComponent<CustomMove>();
-       
+
         //자기 속성 해당하는 컴포넌트 삭제
         DestroyImmediate(_otherCustomMove);
     }

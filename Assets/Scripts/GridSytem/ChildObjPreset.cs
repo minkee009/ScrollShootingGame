@@ -22,7 +22,6 @@ public class ChildObjPreset
         {
             foreach(var prop in nodeProps)
             {
-                prop.RemovecomponentForInstance(_instance);
                 prop.AddcomponentForInstance(_instance);
             }
         }
