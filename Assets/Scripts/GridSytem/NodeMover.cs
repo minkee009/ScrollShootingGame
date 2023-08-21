@@ -81,10 +81,8 @@ public class NodeMover : MonoBehaviour
             {
                 _isSelected = false;
 
-                var currentNodeObj = _selectedNodePrefab.GetComponent<NodeObj>();
-                var currentNodeProp = _selectedNodePrefab.GetComponent<NodeProp>();
-                var currentIsNodeObj = currentNodeObj != null;
-                var currentIsNodeProp = currentNodeProp != null;
+                var currentIsNodeObj = _selectedNodePrefab.TryGetComponent(out NodeObj currentNodeObj);
+                var currentIsNodeProp = _selectedNodePrefab.TryGetComponent(out NodeProp currentNodeProp);
 
                 if (gridSystem.IsWorldPosOnGrid(gridSystem.WorldMousePos)) //그리드 안
                 {

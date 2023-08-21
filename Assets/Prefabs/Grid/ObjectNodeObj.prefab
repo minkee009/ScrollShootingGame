@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.9725491, g: 0.5568628, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.78039217, b: 0.30980393, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -132,7 +132,7 @@ MonoBehaviour:
   activeObjPrefab: {fileID: 5013594661752093662, guid: 5957fa59c73b0004ba12e6404a9fe599, type: 3}
   sprite: {fileID: 683651221804369229}
   nonRemoveAbleObj: 0
-  combineAbleObj: 0
+  combineAbleObj: 1
   typeName: ObjectCreator
 --- !u!1 &6761444697638632254
 GameObject:

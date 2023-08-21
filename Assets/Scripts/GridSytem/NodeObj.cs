@@ -82,12 +82,13 @@ public class NodeObj : MonoBehaviour
         }
     }
 
-    public ChildObjPreset GetChildObjPreset()
+    public virtual ChildObjPreset GetChildObjPreset()
     {
         ChildObjPreset preset = new ChildObjPreset();
         preset.nodeProps = GetComponents<NodeProp>();
         preset.activePrefab = activeObjPrefab;
         preset.createPos = Vector3.zero;
+        preset.typeName = typeName;
         return preset;
     }
 }

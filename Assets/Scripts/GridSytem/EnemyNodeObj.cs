@@ -8,7 +8,7 @@ public class EnemyNodeObj : NodeObj
 {
     EnemyController _enemy;
     
-    ChildObjPreset _ItemObjPreset;
+    public ChildObjPreset ItemObjPreset;
 
     public override bool TryCombineOtherNodeObj(NodeObj other)
     {
@@ -18,7 +18,7 @@ public class EnemyNodeObj : NodeObj
                 return false;
             case "BonusItem":
             case "BotItem":
-                _ItemObjPreset = other.GetChildObjPreset();
+                ItemObjPreset = other.GetChildObjPreset();
                 return true;
         }
     }
@@ -30,10 +30,10 @@ public class EnemyNodeObj : NodeObj
 
         _enemy = _myObject.GetComponent<EnemyController>();
 
-        if (_ItemObjPreset != null)
+        if (ItemObjPreset != null)
         {
-            _ItemObjPreset.pivotTransform = _myObject.transform;
-            _enemy.itemPreset = _ItemObjPreset;
+            ItemObjPreset.pivotTransform = _myObject.transform;
+            _enemy.itemPreset = ItemObjPreset;
             _enemy.GetComponent<HitableObj>().OnDie += _enemy.itemPreset.CreateInPlay;
         }
     }

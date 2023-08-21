@@ -37,8 +37,7 @@ public class CustomMoveProperty : NodeProp
     {
         if (instance == null) return;
 
-        _otherCustomMove = instance.GetComponent<CustomMove>();
-        if (_otherCustomMove != null && _otherCustomMove.GetType().ToString() == preset.ToString())
+        if (instance.TryGetComponent(out _otherCustomMove) && _otherCustomMove.GetType().ToString() == preset.ToString())
         {
             return;
             //커스텀무브 겟타입의 이름을 밝혀서 같은지 아닌지 확인이 되어야함
