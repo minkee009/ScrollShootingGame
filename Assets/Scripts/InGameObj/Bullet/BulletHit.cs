@@ -14,6 +14,9 @@ public class BulletHit : MonoBehaviour
         if(other.TryGetComponent(out _hitObj))
         {
             _hitObj.Hit(-hitDamage, gameObject);
+
+
+
             Destroy(gameObject);
         }
     }

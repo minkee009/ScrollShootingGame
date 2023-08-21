@@ -6,8 +6,6 @@ using UnityEngine;
 
 public class EnemyFire : MonoBehaviour
 {
-    public BulletMove bullet;
-
     float _fireTimer = 0;
 
     // Update is called once per frame
@@ -24,11 +22,18 @@ public class EnemyFire : MonoBehaviour
     private void Fire()
     {
         if (GameManager.instance.playerTransform == null) return;
-        var currentBullet = Instantiate(bullet);
 
-        currentBullet.transform.position = transform.position;
-        currentBullet.transform.up = (GameManager.instance.playerTransform.position - transform.position).normalized;
+        if (BulletManager.instance.enemyBulletPool.Count > 0 )
+        {
+            var currentBullet = BulletManager.instance.enemyBulletPool[0];
 
-        currentBullet.GetComponent<Rigidbody>().Move(currentBullet.transform.position, currentBullet.transform.rotation);
+            currentBullet.SetActive(true);
+            currentBullet.transform.parent = null;
+            currentBullet.transform.position = transform.position;
+            currentBullet.transform.up = (GameManager.instance.playerTransform.position - transform.position).normalized;
+            currentBullet.GetComponent<Rigidbody>().Move(currentBullet.transform.position, currentBullet.transform.rotation);
+
+            BulletManager.instance.enemyBulletPool.Remove(currentBullet);
+        }
     }
 }
