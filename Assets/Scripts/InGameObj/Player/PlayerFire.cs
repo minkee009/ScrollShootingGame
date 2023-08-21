@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerFire : MonoBehaviour
 {
-    public BulletMove bullet;
     public int skillLevel = 0;
     public Transform gunPivot;
 
@@ -47,33 +46,57 @@ public class PlayerFire : MonoBehaviour
 
         void FireSkill1()
         {
-            var currentBullet = Instantiate(bullet);
-            currentBullet.transform.position = gunPivot.position;
-            currentBullet.transform.up = Vector3.up;
-            currentBullet.GetComponent<Rigidbody>().MoveRotation(currentBullet.transform.rotation);
+            if(BulletManager.instance.playerBulletPool.Count > 0)
+            {
+                var currentBullet = BulletManager.instance.playerBulletPool[0];
+
+                currentBullet.SetActive(true);
+                currentBullet.transform.parent = null;
+                currentBullet.transform.position = gunPivot.position;
+                currentBullet.transform.up = Vector3.up;
+                currentBullet.GetComponent<Rigidbody>().Move(currentBullet.transform.position, currentBullet.transform.rotation);
+                currentBullet.GetComponent<BulletMove>().reflect = false;
+
+                BulletManager.instance.playerBulletPool.Remove(currentBullet);
+            }
         }
         void FireSkill2()
         {
             for(int i = 0; i < 2; i++)
             {
-                var currentBullet = Instantiate(bullet);
-                currentBullet.transform.position = gunPivot.position + Vector3.right * (i == 0 ? 0.25f : -0.25f);
-                currentBullet.transform.up = Vector3.up;
-                currentBullet.GetComponent<Rigidbody>().MoveRotation(currentBullet.transform.rotation);
+                if (BulletManager.instance.playerBulletPool.Count > 0)
+                {
+                    var currentBullet = BulletManager.instance.playerBulletPool[0];
+
+                    currentBullet.SetActive(true);
+                    currentBullet.transform.parent = null;
+                    currentBullet.transform.position = gunPivot.position + Vector3.right * (i == 0 ? 0.25f : -0.25f);
+                    currentBullet.transform.up = Vector3.up;
+                    currentBullet.GetComponent<Rigidbody>().Move(currentBullet.transform.position, currentBullet.transform.rotation);
+                    currentBullet.GetComponent<BulletMove>().reflect = false;
+
+                    BulletManager.instance.playerBulletPool.Remove(currentBullet);
+                }
             }
         }
         void FireSkill3()
         {
             for (int i = 0; i < 2; i++)
             {
-                var currentBullet = Instantiate(bullet);
-                var createPos = gunPivot.position + Vector3.right * (i == 0 ? 0.5f : -0.5f);
+                if (BulletManager.instance.playerBulletPool.Count > 0)
+                {
+                    var currentBullet = BulletManager.instance.playerBulletPool[0];
+                    var createPos = gunPivot.position + Vector3.right * (i == 0 ? 0.5f : -0.5f);
 
-                currentBullet.transform.position = createPos;
-                currentBullet.transform.rotation = Quaternion.Euler(0, 0, (i == 0 ? -30 : 30));
+                    currentBullet.SetActive(true);
+                    currentBullet.transform.parent = null;
+                    currentBullet.transform.position = createPos;
+                    currentBullet.transform.rotation = Quaternion.Euler(0, 0, (i == 0 ? -30 : 30));
+                    currentBullet.GetComponent<Rigidbody>().Move(currentBullet.transform.position, currentBullet.transform.rotation);
+                    currentBullet.GetComponent<BulletMove>().reflect = true;
 
-                currentBullet.GetComponent<Rigidbody>().Move(currentBullet.transform.position, currentBullet.transform.rotation);
-                currentBullet.reflect = true;
+                    BulletManager.instance.playerBulletPool.Remove(currentBullet);
+                }
             }
         }
         void FireSkill4()
@@ -85,15 +108,20 @@ public class PlayerFire : MonoBehaviour
             {
                 for (int i = 0; i < numOfBullet; i++)
                 {
-                    var currentBullet = Instantiate(bullet);
-                    currentBullet.transform.position = transform.position;
-                    currentBullet.speed = 15f;
+                    if (BulletManager.instance.playerBulletPool.Count > 0)
+                    {
+                        var currentBullet = BulletManager.instance.playerBulletPool[0];
+                        
+                        currentBullet.SetActive(true);
+                        currentBullet.transform.parent = null;
+                        currentBullet.transform.position = transform.position;
+                        currentBullet.transform.rotation = Quaternion.Euler(0, 0, i * degrees);
+                        currentBullet.GetComponent<Rigidbody>().Move(currentBullet.transform.position, currentBullet.transform.rotation);
+                        currentBullet.GetComponent<BulletMove>().reflect = true;
+                        currentBullet.GetComponent<BulletMove>().speed = 15f;
 
-                    currentBullet.transform.rotation = Quaternion.Euler(0, 0, i * degrees);
-
-                    currentBullet.GetComponent<Rigidbody>().Move(currentBullet.transform.position, currentBullet.transform.rotation);
-
-                    currentBullet.reflect = true;
+                        BulletManager.instance.playerBulletPool.Remove(currentBullet);
+                    }
                 }
                 _bombCounter = 0;
             }

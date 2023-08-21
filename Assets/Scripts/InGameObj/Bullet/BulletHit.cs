@@ -15,9 +15,19 @@ public class BulletHit : MonoBehaviour
         {
             _hitObj.Hit(-hitDamage, gameObject);
 
+            if (gameObject.layer == 8)
+            {
+                BulletManager.instance.playerBulletPool.Add(gameObject);
+                transform.parent = BulletManager.instance.playerBulletPoolParent;
+            }
+            else if (gameObject.layer == 9)
+            {
+                BulletManager.instance.enemyBulletPool.Add(gameObject);
+                transform.parent = BulletManager.instance.enemyBulletPoolParent;
+            }
 
-
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+            return;
         }
     }
 }
