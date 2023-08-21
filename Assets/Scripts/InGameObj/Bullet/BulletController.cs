@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    public void Awake()
+    public void Start()
     {
         GameManager.instance.Act_OnGameReset += ForceDestroy;
     }
