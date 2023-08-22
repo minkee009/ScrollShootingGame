@@ -148,6 +148,7 @@ public class PlayerMove : MonoBehaviour
 
     private void OnDestroy()
     {
-        bButton.buttonAction -= MoblieDogeClick;
+        if (bButton != null)
+            bButton.buttonAction -= MoblieDogeClick;
     }
 }

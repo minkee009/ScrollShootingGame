@@ -137,6 +137,7 @@ public class PlayerFire : MonoBehaviour
 
     private void OnDestroy()
     {
-        aButton.buttonAction -= Fire;
+        if (aButton != null)
+            aButton.buttonAction -= Fire;
     }
 }

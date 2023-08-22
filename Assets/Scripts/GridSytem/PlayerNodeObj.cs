@@ -11,9 +11,9 @@ public class PlayerNodeObj : NodeObj
     public void Start()
     {
 #if UNITY_ANDROID
-        //_joystick = GameObject.Find("Variable Joystick").GetComponent<VariableJoystick>();
-        //_aButton = GameObject.Find("A Button").GetComponent<MobileInputButton>();
-        //_bButton = GameObject.Find("B Button").GetComponent<MobileInputButton>();
+        /*_joystick = GameObject.Find("Variable Joystick").GetComponent<VariableJoystick>();
+        _aButton = GameObject.Find("A Button").GetComponent<MobileInputButton>();
+        _bButton = GameObject.Find("B Button").GetComponent<MobileInputButton>();*/
 #endif
         GameManager.instance.Act_OnGamePlay += CreateObj;
         GameManager.instance.Act_OnGameReset += ResetObj;
@@ -28,12 +28,12 @@ public class PlayerNodeObj : NodeObj
             _isFirstCreation = false;
 
 #if UNITY_ANDROID
-            //var playerMove = _myObject.GetComponent<PlayerMove>();
-            //playerMove.joystick = _joystick;
-            //playerMove.bButton = _bButton;
+            /*var playerMove = _myObject.GetComponent<PlayerMove>();
+            playerMove.joystick = _joystick;
+            playerMove.bButton = _bButton;
 
-            //var playerFire = _myObject.GetComponent<PlayerFire>();
-            //playerFire.aButton = _aButton;
+            var playerFire = _myObject.GetComponent<PlayerFire>();
+            playerFire.aButton = _aButton;*/
 #endif
 
             GameManager.instance.playerTransform = _myObject.transform;
