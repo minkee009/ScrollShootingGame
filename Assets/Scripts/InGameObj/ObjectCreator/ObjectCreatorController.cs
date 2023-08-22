@@ -49,8 +49,14 @@ public class ObjectCreatorController : MonoBehaviour
                     if(enemysItemChild != null)
                     {
                         var enemyCon = childInstance.instance.GetComponent<EnemyController>();
-                        enemyCon.itemPreset = enemysItemChild;
-                        enemyCon.itemPreset.pivotTransform = childInstance.instance.transform;
+
+                        var itemChild = new ChildObjPreset();
+                        itemChild.activePrefab = enemysItemChild.activePrefab;
+                        itemChild.pivotTransform = childInstance.instance.transform;
+                        itemChild.nodeProps = enemysItemChild.nodeProps;
+                        itemChild.typeName = enemysItemChild.typeName;
+
+                        enemyCon.itemPreset = itemChild;
                         childInstance.instance.GetComponent<HitableObj>().OnDie += enemyCon.itemPreset.CreateInPlay;
                     }
                     break;

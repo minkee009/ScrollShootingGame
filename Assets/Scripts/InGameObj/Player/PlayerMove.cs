@@ -11,6 +11,8 @@ public class PlayerMove : MonoBehaviour
     public BoxCollider box;
     public float speed = 5f;
     public float moveSharpness = 12f;
+    public VariableJoystick joystick;
+    public MobileInputButton bButton;
 
     [Header("회전 관련")]
     public Transform rootPivot;
@@ -36,10 +38,13 @@ public class PlayerMove : MonoBehaviour
     Vector3 _currentVelocity = Vector3.zero;
     float _dogeTimer = 0;
     bool _isDodge = false;
+    bool _mobileDogeClick = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        if (bButton != null)
+            bButton.buttonAction += MoblieDogeClick;
         rb = GetComponent<Rigidbody>();
         box = GetComponent<BoxCollider>();
         dogeReadyTimer = 3f;
@@ -54,13 +59,19 @@ public class PlayerMove : MonoBehaviour
         float h = (Input.GetKey(KeyCode.RightArrow) ? 1 : 0) + (Input.GetKey(KeyCode.LeftArrow) ? -1 : 0);
         float v = (Input.GetKey(KeyCode.UpArrow) ? 1 : 0) + (Input.GetKey(KeyCode.DownArrow) ? -1 : 0);
 
+        if(joystick != null)
+        {
+            h += joystick.Horizontal;
+            v += joystick.Vertical;
+        }
+        
         //회피 입력
-        if (!_isDodge && Mathf.Abs(h) > 0 && dogeReadyTimer >= dodgeReadyTime && Input.GetKeyDown(KeyCode.X))
+        if (!_isDodge && Mathf.Abs(h) > 0 && dogeReadyTimer >= dodgeReadyTime && (Input.GetKeyDown(KeyCode.X) || _mobileDogeClick))
         {
             box.enabled = false;
             _isDodge = true;
             _dogeTimer = 0;
-            _currentH = h;
+            _currentH = h > 0 ? 1 : -1;
         }
 
         Vector3 dir = Vector3.right * h + Vector3.up * v;
@@ -126,5 +137,17 @@ public class PlayerMove : MonoBehaviour
 
         //강체 오류 방지
         rb.MovePosition(transform.position);
+
+        _mobileDogeClick = false;
+    }
+
+    public void MoblieDogeClick()
+    {
+        _mobileDogeClick = true;
+    }
+
+    private void OnDestroy()
+    {
+        bButton.buttonAction -= MoblieDogeClick;
     }
 }

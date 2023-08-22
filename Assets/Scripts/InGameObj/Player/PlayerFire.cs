@@ -6,8 +6,15 @@ public class PlayerFire : MonoBehaviour
 {
     public int skillLevel = 0;
     public Transform gunPivot;
+    public MobileInputButton aButton;
 
     float _bombCounter = 3;
+
+    private void Start()
+    {
+        if(aButton != null)
+         aButton.buttonAction += Fire;
+    }
 
     // Update is called once per frame
     void Update()
@@ -18,14 +25,14 @@ public class PlayerFire : MonoBehaviour
              
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            Fire(skillLevel);
+            Fire();
         }
         _bombCounter = Mathf.Min(_bombCounter + deltaTime, 3);
     }
 
-    void Fire(int level)
+    void Fire()
     {
-        switch (level)
+        switch (skillLevel)
         {
             case 0:
                 FireSkill1();
@@ -126,5 +133,10 @@ public class PlayerFire : MonoBehaviour
                 _bombCounter = 0;
             }
         }
+    }
+
+    private void OnDestroy()
+    {
+        aButton.buttonAction -= Fire;
     }
 }
