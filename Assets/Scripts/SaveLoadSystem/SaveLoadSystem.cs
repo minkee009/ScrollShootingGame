@@ -135,7 +135,7 @@ public class SaveLoadSystem : MonoBehaviour
                         Destroy(OCChildObjProp.gameObject);
                     }
 
-                    if (nodeInfo.presets[0] == "Enemy")
+                    if (nodeInfo.presets[0] == "Enemy" && nodeInfo.presets[1] != "")
                     {
                         var OCChildObj2 = Instantiate(_nodePrefabsDict[nodeInfo.presets[1]]);
                         if (nodeInfo.presetProps[1] != "")
