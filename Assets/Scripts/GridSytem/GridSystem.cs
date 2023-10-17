@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
@@ -23,7 +24,7 @@ public class GridSystem : MonoBehaviour
 
     public Node[,] GridMap { get; private set; }
 
-    public Dictionary<Node, Vector2> AttachedNodes = new Dictionary<Node, Vector2>();
+    public Dictionary<Node, int[]> AttachedNodes = new Dictionary<Node, int[]>();
 
     public void CreateGrid()
     {
@@ -128,11 +129,9 @@ public class GridSystem : MonoBehaviour
         return gridIndex;
     }
 
-    public Vector2 GetGridMapIndex(Node node)
+    public int[] GetGridMapIndex(Node node)
     {
-        var index = GetGridMapIndex(node.position);
-
-        return new Vector2(index[0], index[1]);
+        return GetGridMapIndex(node.position);
     }
 
     /// <summary>
@@ -198,16 +197,28 @@ public class GridSystem : MonoBehaviour
         if (node == null || !node.isAttached) return false;
 
         if (destroy)
-        {
             Destroy(node.attachedObject);
-        }
 
         node.isAttached = false;
         node.attachedObject = null;
-
+        
         AttachedNodes.Remove(node);
 
         return true;
+    }
+
+    public void ClearAllNodeInGridMap()
+    {
+        foreach (var node in AttachedNodes.Keys)
+        {
+            if (node == null || !node.isAttached)
+                continue;
+
+            Destroy(node.attachedObject);
+            node.isAttached = false;
+            node.attachedObject = null;
+        }
+        AttachedNodes.Clear();
     }
 
     private void OnDrawGizmos()
@@ -243,6 +254,8 @@ public class GridSystem : MonoBehaviour
         Gizmos.DrawCube(onPos, Vector3.one);
 
     }
+
+
 }
 
 public class Node
