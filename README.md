@@ -6,7 +6,8 @@
 # 각각의 노드
 
 ### 적
-<a href="https://imgur.com/dvDNv5O"><img src="https://i.imgur.com/dvDNv5O.gif" title="source: imgur.com" /></a>
+![제목 없는 동영상 (5)](https://github.com/minkee009/ScrollShootingGame/assets/5203515/b67463e1-d9f5-4e78-8a56-525f16dcf1bc)
+
 플레이어를 향해 주기적으로 투사체를 발사합니다.
 
 이동속성 노드와 아이템 노드를 집어넣을 수 있습니다.
