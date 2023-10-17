@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NodeProp : MonoBehaviour
+public interface INodeProp
 {
+    public string TypeName { get; }
+
     public virtual bool TryCombineOtherNodeObj(NodeObj other)
     {
         return false;

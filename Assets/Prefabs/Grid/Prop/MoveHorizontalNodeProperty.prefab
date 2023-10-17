@@ -132,6 +132,7 @@ MonoBehaviour:
   preset: 1
   speed: 2
   moveSharpness: 6
+  _typeName: MoveProp
 --- !u!1 &6761444697638632254
 GameObject:
   m_ObjectHideFlags: 0

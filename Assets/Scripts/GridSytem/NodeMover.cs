@@ -58,7 +58,7 @@ public class NodeMover : MonoBehaviour
             && gridSystem.IsWorldPosOnGrid(gridSystem.WorldMousePos)
             && Input.GetMouseButtonDown(0))
         {
-            if (gridSystem.TryGetAttachedNodeInGrid(ref _selectedNode, gridSystem.GetGridMapIndex(gridSystem.WorldMousePos)))
+            if (gridSystem.TryGetAttachedNodeInGrid(out _selectedNode, gridSystem.GetGridMapIndex(gridSystem.WorldMousePos)))
             {
                 _lastNodePos = _selectedNode.position;
                 _selectedNodePrefab = _selectedNode.attachedObject;
@@ -82,7 +82,7 @@ public class NodeMover : MonoBehaviour
                 _isSelected = false;
 
                 var currentIsNodeObj = _selectedNodePrefab.TryGetComponent(out NodeObj currentNodeObj);
-                var currentIsNodeProp = _selectedNodePrefab.TryGetComponent(out NodeProp currentNodeProp);
+                var currentIsNodeProp = _selectedNodePrefab.TryGetComponent(out INodeProp currentNodeProp);
 
                 if (gridSystem.IsWorldPosOnGrid(gridSystem.WorldMousePos)) //그리드 안
                 {

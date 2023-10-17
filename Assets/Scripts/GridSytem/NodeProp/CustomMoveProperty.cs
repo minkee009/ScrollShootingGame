@@ -5,7 +5,7 @@ using UnityEngine;
 
 public enum CustomMovePreset { MoveDownward = 0, MoveHorizontal, MoveToPlayer }
 
-public class CustomMoveProperty : NodeProp
+public class CustomMoveProperty : MonoBehaviour, INodeProp
 {
     public CustomMovePreset preset;
     public float speed = 4.0f;
@@ -14,7 +14,11 @@ public class CustomMoveProperty : NodeProp
     CustomMove _otherCustomMove;
     CustomMoveProperty _otherMoveComponent;
 
-    public override bool TryCombineOtherNodeObj(NodeObj other)
+    public string TypeName => _typeName;
+
+    [SerializeField] string _typeName;
+
+    public bool TryCombineOtherNodeObj(NodeObj other)
     {
         if (other.typeName == "Player" || other.typeName == "ObjectCreator") 
             return false;
@@ -29,11 +33,12 @@ public class CustomMoveProperty : NodeProp
         c.preset = preset;
         c.speed = speed;
         c.moveSharpness = moveSharpness;
+        c._typeName = _typeName;
 
         return true;
     }
 
-    public override void AddcomponentForInstance(GameObject instance)
+    public void AddcomponentForInstance(GameObject instance)
     {
         if (instance == null) return;
 
@@ -71,7 +76,7 @@ public class CustomMoveProperty : NodeProp
         }
     }
 
-    public override void RemovecomponentForInstance(GameObject instance)
+    public void RemovecomponentForInstance(GameObject instance)
     {
         if(instance == null) return;
        

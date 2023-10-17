@@ -56,9 +56,9 @@ public class NodeObj : MonoBehaviour
             _isFirstCreation = false;
         }
 
-        var nodeProps = GetComponents<NodeProp>();
+        var nodeProps = GetComponents<INodeProp>();
 
-        foreach (NodeProp nodeProp in nodeProps)
+        foreach (INodeProp nodeProp in nodeProps)
         {
             nodeProp.AddcomponentForInstance(_myObject);
         }
@@ -85,7 +85,7 @@ public class NodeObj : MonoBehaviour
     public virtual ChildObjPreset GetChildObjPreset()
     {
         ChildObjPreset preset = new ChildObjPreset();
-        preset.nodeProps = GetComponents<NodeProp>();
+        preset.nodeProps = GetComponents<INodeProp>();
         preset.activePrefab = activeObjPrefab;
         preset.createPos = Vector3.zero;
         preset.typeName = typeName;

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -22,15 +23,17 @@ public class GridSystem : MonoBehaviour
 
     public Node[,] GridMap { get; private set; }
 
+    public Dictionary<Node, Vector2> AttachedNodes = new Dictionary<Node, Vector2>();
+
     public void CreateGrid()
     {
         GridMap = new Node[gridWidth, gridHeight];
 
-        for(int i = 0; i< gridWidth; i++)
+        for (int i = 0; i < gridWidth; i++)
         {
-            for(int j = 0; j< gridHeight; j++)
+            for (int j = 0; j < gridHeight; j++)
             {
-                Vector3 worldPos = new Vector3 (i , j , 0) + gridPivot.position;
+                Vector3 worldPos = new Vector3(i, j, 0) + gridPivot.position;
 
                 GridMap[i, j] = new Node(worldPos, false, null);
             }
@@ -120,9 +123,16 @@ public class GridSystem : MonoBehaviour
         var x = (int)Mathf.Clamp(worldPos.x, 0f, gridWidth - 1);
         var y = (int)Mathf.Clamp(worldPos.y, 0f, gridHeight - 1);
 
-        int[] gridIndex = { x , y };
+        int[] gridIndex = { x, y };
 
         return gridIndex;
+    }
+
+    public Vector2 GetGridMapIndex(Node node)
+    {
+        var index = GetGridMapIndex(node.position);
+
+        return new Vector2(index[0], index[1]);
     }
 
     /// <summary>
@@ -132,7 +142,7 @@ public class GridSystem : MonoBehaviour
     /// <returns></returns>
     public Node GetNodeInGrid(int[] gridIndex)
     {
-        return GridMap[gridIndex[0],gridIndex[1]];
+        return GridMap[gridIndex[0], gridIndex[1]];
     }
 
     public Node GetNodeInGrid(Vector2 gridIndex)
@@ -142,8 +152,15 @@ public class GridSystem : MonoBehaviour
         return GridMap[clampedX, clampedY];
     }
 
-    public bool TryGetAttachedNodeInGrid(ref Node node, int[] index)
+    /// <summary>
+    /// 활성화된 노드의 정보를 읽습니다.
+    /// </summary>
+    /// <param name="node"></param>
+    /// <param name="index"></param>
+    /// <returns></returns>
+    public bool TryGetAttachedNodeInGrid(out Node node, int[] index)
     {
+        node = null;
         var currentNode = GetNodeInGrid(index);
 
         if (currentNode.isAttached)
@@ -162,11 +179,12 @@ public class GridSystem : MonoBehaviour
     public bool TryAttachObjToNode(Node node, GameObject obj)
     {
         if (node == null || node.isAttached) return false;
-        
+
         node.isAttached = true;
         node.attachedObject = obj;
 
         node.attachedObject.transform.position = node.position;
+        AttachedNodes.Add(node, GetGridMapIndex(node));
         return true;
     }
 
@@ -186,6 +204,9 @@ public class GridSystem : MonoBehaviour
 
         node.isAttached = false;
         node.attachedObject = null;
+
+        AttachedNodes.Remove(node);
+
         return true;
     }
 
@@ -213,15 +234,15 @@ public class GridSystem : MonoBehaviour
             }
         }
 
-        if(!TryGetWorldPosOnGrid(WorldMousePos, out Vector3 onPos))
+        if (!TryGetWorldPosOnGrid(WorldMousePos, out Vector3 onPos))
         {
             onPos = Vector3.one * 1080f;
         }
 
         Gizmos.color = Color.red;
         Gizmos.DrawCube(onPos, Vector3.one);
-    }
 
+    }
 }
 
 public class Node
@@ -230,7 +251,7 @@ public class Node
     public bool isAttached;
     public GameObject attachedObject;
 
-    public Node (Vector3 position, bool isAttached, GameObject attachedObject)
+    public Node(Vector3 position, bool isAttached, GameObject attachedObject)
     {
         this.position = position;
         this.isAttached = isAttached;

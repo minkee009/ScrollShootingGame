@@ -6,7 +6,7 @@ using UnityEngine;
 public class ChildObjPreset
 {
     public GameObject activePrefab;
-    public NodeProp[] nodeProps;
+    public INodeProp[] nodeProps;
     public Transform pivotTransform;
     public Vector3 createPos;
     public string typeName;

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ObjectCreatorNodeObj : NodeObj
 {
+    public ChildObjPreset CreateObjPreset => _createObjPreset;
+    public ChildObjPreset EnemysChildPreset => _enemysChildPreset;
+
     ChildObjPreset _createObjPreset;
     ChildObjPreset _enemysChildPreset;
 
