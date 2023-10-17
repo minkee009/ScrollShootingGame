@@ -2,18 +2,18 @@
 탄막슈팅게임 메이커
 
 # 플레이
-{% include video id="e_qUAN6LTwE" provider="youtube" %}
+[![Video Label](http://img.youtube.com/vi/'e_qUAN6LTwE'/0.jpg)](https://youtu.be/'e_qUAN6LTwE')
 
 # 각각의 노드
 
 ### 적
-<a href="https://imgur.com/tbynJJ3"><img src="https://i.imgur.com/tbynJJ3.gif" title="source: imgur.com" /></a>
+[Imgur](https://i.imgur.com/tbynJJ3.gifv)
 플레이어를 향해 주기적으로 투사체를 발사합니다.
 
 이동속성 노드와 아이템 노드를 집어넣을 수 있습니다.
 
 ### 아이템
-<iframe class="imgur-embed" width="100%" height="720" frameborder="0" src="https://i.imgur.com/nItjx9D.gifv#embed"></iframe>
+[Imgur](https://i.imgur.com/nItjx9D.gifv)
 강화 아이템 (하얀색) - 플레이어의 체력을 1포인트 회복하고 투사체 발사스킬의 레벨을 1단계 올립니다.
 
 드론봇 아이템 (하늘색) - 플레이어 주위를 따라다니는 드론봇을 소환합니다, 드론봇은 15초 뒤에 자동으로 사라집니다, 드론봇이 소환된 상태에서 습득하면 드론봇의 사용시간을 연장합니다.
@@ -21,7 +21,7 @@
 이동속성 노드를 집어넣을 수 있습니다.
 
 ### 크리에이터
-<iframe class="imgur-embed" width="100%" height="720" frameborder="0" src="https://i.imgur.com/bcgmxV4.gifv#embed"></iframe>
+[Imgur](https://i.imgur.com/bcgmxV4.gifv)
 크리에이터에 집어넣은 노드를 주기적으로 생성합니다.
 
 아이템 노드와 적 노드를 집어넣을 수 있습니다.
