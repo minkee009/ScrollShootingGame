@@ -13,7 +13,8 @@
 이동속성 노드와 아이템 노드를 집어넣을 수 있습니다.
 
 ### 아이템
-<a href="https://imgur.com/eVnzWGX"><img src="https://i.imgur.com/eVnzWGX.gif" title="source: imgur.com" /></a>
+![제목 없는 동영상](https://github.com/minkee009/ScrollShootingGame/assets/5203515/6c72c628-815c-4fdb-8474-a3fd206125a6)
+
 강화 아이템 (하얀색) - 플레이어의 체력을 1포인트 회복하고 투사체 발사스킬의 레벨을 1단계 올립니다.
 
 드론봇 아이템 (하늘색) - 플레이어 주위를 따라다니는 드론봇을 소환합니다, 드론봇은 15초 뒤에 자동으로 사라집니다, 드론봇이 소환된 상태에서 습득하면 드론봇의 사용시간을 연장합니다.
@@ -21,13 +22,17 @@
 이동속성 노드를 집어넣을 수 있습니다.
 
 ### 크리에이터
-<a href="https://imgur.com/DGvU6Aj"><img src="https://i.imgur.com/DGvU6Aj.gif" title="source: imgur.com" /></a>
+
+![Untitled video](https://github.com/minkee009/ScrollShootingGame/assets/5203515/484cf221-1741-4369-9647-96398492fd12)
+
+
 크리에이터에 집어넣은 노드를 주기적으로 생성합니다.
 
 아이템 노드와 적 노드를 집어넣을 수 있습니다.
 
 ### 이동속성
-<a href="https://imgur.com/Se7fEuT"><img src="https://i.imgur.com/Se7fEuT.gif" title="source: imgur.com" /></a>
+![Se7fEuT](https://github.com/minkee009/ScrollShootingGame/assets/5203515/402fac01-bd9a-4c1c-8291-e902c75a339c)
+
 다른 노드에 집어넣으면 해당 노드를 이동할 수 있게 만들어 줍니다.
 
  1. 아랫방향 - 아래를 향해 내려갑니다.
